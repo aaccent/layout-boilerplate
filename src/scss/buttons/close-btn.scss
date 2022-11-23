@@ -1,0 +1,57 @@
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  transition: border-color .2s ease-in-out;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+
+
+  border-radius: 50%;
+
+  span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      transition: background-color .2s ease-in-out;
+      background-color: #b5c5f2;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &:hover {
+    border-color: #ffffff;
+
+    span {
+      &::before, &::after {
+        background-color: #ffffff;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .close-btn {
+    width: 35px;
+    height: 35px;
+
+    span::after, span::before {
+      height: 16px;
+    }
+  }
+}

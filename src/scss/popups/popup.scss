@@ -1,0 +1,70 @@
+.popup {
+  padding: 15px 35px 15px 15px;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  visibility: hidden;
+  transition: opacity, visibility;
+  transition-timing-function: ease-in-out;
+  transition-duration: .3s;
+  opacity: 0;
+  background-color: rgba(0, 7, 27, 0.8);
+
+  &.opened {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: fit-content;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    visibility: hidden;
+    transition: opacity, visibility;
+    transition-timing-function: ease-in-out;
+    transition-duration: .3s;
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 0;
+
+    &.opened {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .close-btn {
+    z-index: 30;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .popup {
+    padding: 15px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .popup {
+    .close-btn {
+      top: 15px;
+      right: 15px;
+    }
+  }
+}

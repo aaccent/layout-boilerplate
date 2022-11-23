@@ -1,0 +1,14 @@
+@use './general/reset';
+@use './general/variables';
+@use './general/fonts';
+@use './general/global';
+
+// Popup
+@use 'popups/popup';
+
+// Buttons
+@use 'buttons/close-btn';
+
+// Page
+@use 'page/header';
+@use 'page/footer';

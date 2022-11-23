@@ -1,0 +1,15 @@
+# Dist
+dist
+
+# env
+.env
+.idea
+.vscode
+
+# npm
+node_modules
+package-lock.json
+
+# Tests
+*.test.*
+test.*

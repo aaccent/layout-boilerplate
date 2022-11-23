@@ -1,0 +1,47 @@
+html {
+  overflow-x: hidden;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1230px;
+}
+
+.main-wrapper {
+  display: flex;
+  flex: 0 0;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+:root {
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.disable-scroll {
+  overflow: hidden;
+
+  body {
+    padding-right: 17px;
+    overflow: hidden;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .disable-scroll {
+    body {
+      padding-right: 0;
+    }
+  }
+}
