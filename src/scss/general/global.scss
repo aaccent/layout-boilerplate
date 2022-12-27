@@ -1,11 +1,6 @@
 html {
   overflow-x: hidden;
-  box-sizing: border-box;
   scroll-behavior: smooth;
-}
-
-*, *::after, *::before {
-  box-sizing: inherit;
 }
 
 .container {
@@ -22,7 +17,8 @@ html {
   min-height: 100vh;
 }
 
-:root {
+.hidden {
+  display: none;
 }
 
 body {
@@ -33,7 +29,6 @@ body {
   overflow: hidden;
 
   body {
-    padding-right: 17px;
     overflow: hidden;
   }
 }
