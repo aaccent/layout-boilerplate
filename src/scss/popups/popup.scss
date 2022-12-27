@@ -1,11 +1,14 @@
+@forward 'scss/ui/buttons/close-btn';
+
 .popup {
-  padding: 15px 35px 15px 15px;
+  padding: 15px;
   position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  display: flex;
+  width: 100%;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   visibility: hidden;
@@ -13,7 +16,7 @@
   transition-timing-function: ease-in-out;
   transition-duration: .3s;
   opacity: 0;
-  background-color: rgba(0, 7, 27, 0.8);
+  background-color: hsla(140, 100%, 2%, 0.8);
 
   &.opened {
     visibility: visible;
@@ -21,30 +24,8 @@
   }
 
   &__body {
+    margin: auto;
     position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  &__content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: fit-content;
-    max-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    visibility: hidden;
-    transition: opacity, visibility;
-    transition-timing-function: ease-in-out;
-    transition-duration: .3s;
-    transform: translateX(-50%) translateY(-50%);
-    opacity: 0;
-
-    &.opened {
-      visibility: visible;
-      opacity: 1;
-    }
   }
 
   .close-btn {
@@ -54,17 +35,17 @@
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1100px) {
   .popup {
-    padding: 15px;
+    width: 100vw;
   }
 }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 450px) {
   .popup {
     .close-btn {
-      top: 15px;
-      right: 15px;
+      top: 5px;
+      right: 5px;
     }
   }
 }
