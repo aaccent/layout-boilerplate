@@ -11,8 +11,9 @@ const foldersNames = {
 	src: 'src',
 	dist: 'dist',
 	css: 'css',
-	scss: 'scss',
 	js: 'js',
+	styles: 'styles',
+	scripts: 'scripts',
 	htmlParts: 'layout'
 }
 
@@ -27,16 +28,17 @@ const paths = {
 		_: rootPaths.src,
 		img: path.join(rootPaths.src, foldersNames.img),
 		fonts: path.join(rootPaths.src, foldersNames.fonts),
-		js: path.join(rootPaths.src, foldersNames.js),
+		scripts: path.join(rootPaths.src, foldersNames.scripts),
 		htmlParts: path.join(rootPaths.src, foldersNames.htmlParts),
-		scss: path.join(rootPaths.src, foldersNames.scss)
+		styles: path.join(rootPaths.src, foldersNames.styles)
 	},
 	dist: {
 		/** Path of 'dist' folder */
 		_: rootPaths.dist,
 		img: path.join(rootPaths.dist, foldersNames.img),
 		fonts: path.join(rootPaths.dist, foldersNames.fonts),
-		js: path.join(rootPaths.dist, foldersNames.js),
+		scripts: path.join(rootPaths.dist, foldersNames.js),
+		styles: path.join(rootPaths.dist, foldersNames.css),
 	},
 }
 
