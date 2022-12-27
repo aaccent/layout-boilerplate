@@ -1,8 +1,8 @@
-@use './general/_normalize.css';
-@use './general/reset';
-@use './general/variables';
-@use './general/fonts';
-@use './general/global';
+@use 'general/_normalize.css';
+@use 'general/reset';
+@use 'general/variables';
+@use 'general/fonts';
+@use 'general/global';
 
 // Popup
 @use 'popups/popup';
