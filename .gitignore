@@ -10,5 +10,4 @@ dist
 node_modules
 
 # Tests
-*.test.*
 test.*
