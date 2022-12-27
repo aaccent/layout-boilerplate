@@ -1,4 +1,9 @@
 mixin section(props)
+	-
+		props = Object.assign(props || {}, {
+			container: true,
+		})
+
 	section.section&attributes(attributes)
 		if props.container
 			.container: block
@@ -6,6 +11,11 @@ mixin section(props)
 			block
 
 mixin b-block(props)
+	-
+		props = Object.assign(props || {}, {
+			container: true,
+		})
+
 	.block&attributes(attributes)
 		if props.container
 			.container: block
@@ -13,6 +23,11 @@ mixin b-block(props)
 			block
 
 mixin sectionBlock(props)
+	-
+		props = Object.assign(props || {}, {
+			container: true,
+		})
+
 	.section&attributes(attributes)
 		if props.container
 			.container: block
