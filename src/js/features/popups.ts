@@ -1,39 +1,64 @@
-const popup = document.querySelector('.popup')
-const popupBody = document.querySelector('.popup__body')
-const closePopupBtns = document.querySelectorAll('.popup__content .close-btn')
+const popupBtns = document.querySelectorAll<HTMLButtonElement>('button[data-action="popup"]')
+const popups = document.querySelectorAll('.popup')
 
-function initPopups() {
-	if (!popupBody) return
-
-	popupBody.addEventListener('click', e => {
+popups.forEach(i => {
+	i.addEventListener('click', function(e) {
 		if (e.currentTarget !== e.target) return
 
-		closeAllPopups()
+		closeActivePopup()
 	})
+})
 
-	closePopupBtns.forEach(btn => {
-		btn.addEventListener('click', closeAllPopups)
+popupBtns.forEach(btn => {
+	btn.addEventListener('click', (e) => {
+		try {
+			popupBtnHandler(e)
+		} catch (err) {
+			console.error(err, '\n Button: \n', btn)
+		}
 	})
+})
+
+const closePopupBtns = document.querySelectorAll('button[data-action="close-popup"]')
+closePopupBtns.forEach(btn => {
+	btn.addEventListener('click', closeActivePopup)
+})
+
+const openedPopupEvent = new CustomEvent('opened')
+const closedPopupEvent = new CustomEvent('closed')
+
+function popupBtnHandler(e: MouseEvent) {
+	const target = e.currentTarget as HTMLElement
+	const popupName = target.dataset.popup
+
+	if (!popupName) throw new Error('button with data-action="popup" doesnt have data-popup')
+
+	openPopup(popupName)
 }
 
-function togglePopup(selector: string) {
-	const targetPopup = document.querySelector(`.popup__content${ selector }`)
-	if (!popup || !targetPopup) return
+export function openPopup(name: string) {
+	const targetPopup = document.querySelector<HTMLDivElement>(`.popup[data-popup="${ name }"]`)
 
-	popup.classList.toggle('opened')
-	document.documentElement.classList.toggle('disable-scroll')
+	if (!targetPopup) throw new Error(`Cant find .popup with data-popup="${ name }"`)
 
-	targetPopup.classList.toggle('opened')
+	closeActivePopup()
+	targetPopup.classList.add('opened')
+	targetPopup.dispatchEvent(openedPopupEvent)
+
+	document.body.addEventListener('keydown', escKeyHandler)
 }
 
-function closeAllPopups() {
-	const targetPopup = document.querySelector(`.popup__content.opened`)
-	if (!popup || !targetPopup) return
+function escKeyHandler(e: KeyboardEvent) {
+	if (e.key !== 'Escape') return
 
-	popup.classList.remove('opened')
-	document.documentElement.classList.remove('disable-scroll')
-
-	targetPopup.classList.remove('opened')
+	closeActivePopup()
+	document.body.removeEventListener('keydown', escKeyHandler)
 }
 
-export { initPopups, togglePopup }
+export function closeActivePopup() {
+	const activePopup = document.querySelector('.popup.opened')
+	if (!activePopup) return
+
+	activePopup.classList.remove('opened')
+	activePopup.dispatchEvent(closedPopupEvent)
+}
