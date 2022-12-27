@@ -1,14 +1,10 @@
 extends layout/page
 
+include layout/utils
 
 append head
-    //link(href=require('scss/pages/index/index.style.scss') rel="stylesheet")
 
 append main
-    include layout/utils
-    +section()
-        h1 Some header
-
 
 append scripts
-    script(src=require('js/pages/index/index.main.ts'))
+	script(src=require('js/pages/index/index.main.ts'))
