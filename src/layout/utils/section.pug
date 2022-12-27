@@ -1,0 +1,20 @@
+mixin section(props)
+	section.section&attributes(attributes)
+		if props.container
+			.container: block
+		else
+			block
+
+mixin b-block(props)
+	.block&attributes(attributes)
+		if props.container
+			.container: block
+		else
+			block
+
+mixin sectionBlock(props)
+	.section&attributes(attributes)
+		if props.container
+			.container: block
+		else
+			block
