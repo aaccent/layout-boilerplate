@@ -2,7 +2,7 @@ const path = require('path')
 const PugPlugin = require('pug-plugin')
 
 const getEntry = require('./webpack/getEntry')
-const { rootPaths, foldersNames } = require('./webpack/paths.js')
+const { foldersNames, paths } = require('./webpack/paths.js')
 
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
@@ -16,13 +16,13 @@ const keepPugFolderStructure = (pathData) => {
 }
 
 module.exports = async (env) => {
-	const entry = await getEntry([ rootPaths.src ])
+	const entry = await getEntry([ paths.src._ ])
 
 	return {
 		mode: env.WEBPACK_SERVE ? 'development' : 'production',
 		entry: { ...entry },
 		output: {
-			path: rootPaths.dist,
+			path: paths.dist._,
 			filename: ({ chunk }) => {
 				return `${ foldersNames.js }/${ chunk.name.split('.')[0] }.bundle.js`
 			},
@@ -31,12 +31,21 @@ module.exports = async (env) => {
 		devtool: 'source-map',
 		devServer: {
 			static: {
-				directory: rootPaths.src,
+				directory: paths.src._,
 			},
 			client: { progress: true },
 		},
 		resolve: {
 			extensions: [ '.js', '.ts' ],
+			alias: {
+				npm: path.resolve(process.cwd(), 'node_modules'),
+				src: paths.src._,
+				images: paths.src.img,
+				js: paths.src.js,
+				layout: paths.src.htmlParts,
+				scss: paths.src.scss,
+				fonts: paths.src.fonts,
+			},
 		},
 		module: {
 			rules: [

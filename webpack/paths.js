@@ -13,6 +13,7 @@ const foldersNames = {
 	css: 'css',
 	scss: 'scss',
 	js: 'js',
+	htmlParts: 'layout'
 }
 
 const rootPaths = {
@@ -22,16 +23,21 @@ const rootPaths = {
 
 const paths = {
 	src: {
+		/** Path of 'src' folder */
+		_: rootPaths.src,
 		img: path.join(rootPaths.src, foldersNames.img),
-		fonts: path.join(rootPaths.src, 'fonts'),
-		js: path.join(rootPaths.src, 'js'),
-		htmlParts: path.join(rootPaths.src, 'layout'),
+		fonts: path.join(rootPaths.src, foldersNames.fonts),
+		js: path.join(rootPaths.src, foldersNames.js),
+		htmlParts: path.join(rootPaths.src, foldersNames.htmlParts),
+		scss: path.join(rootPaths.src, foldersNames.scss)
 	},
 	dist: {
+		/** Path of 'dist' folder */
+		_: rootPaths.dist,
 		img: path.join(rootPaths.dist, foldersNames.img),
-		fonts: path.join(rootPaths.dist, 'fonts'),
-		js: path.join(rootPaths.dist, 'js'),
+		fonts: path.join(rootPaths.dist, foldersNames.fonts),
+		js: path.join(rootPaths.dist, foldersNames.js),
 	},
 }
 
-module.exports = { paths, rootPaths, filesNames, foldersNames }
+module.exports = { paths, filesNames, foldersNames }
