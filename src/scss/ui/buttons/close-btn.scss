@@ -1,57 +1,62 @@
+@use 'scss/utils' as *;
+
 .close-btn {
   position: absolute;
   top: 0;
   right: 0;
-  width: 50px;
-  height: 50px;
-  transition: border-color .2s ease-in-out;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
 
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 2.6px;
+    height: 26px;
+    border-radius: 4px;
+    background-color: #909090;
+    @include transition(background-color);
+  }
 
-  border-radius: 50%;
+  &::before {
+    transform: rotate(45deg);
+  }
 
-  span {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &::before, &::after {
-      content: '';
-      position: absolute;
-      width: 2px;
-      height: 20px;
-      transition: background-color .2s ease-in-out;
-      background-color: #b5c5f2;
-    }
-
-    &::before {
-      transform: rotate(45deg);
-    }
-
-    &::after {
-      transform: rotate(-45deg);
-    }
+  &::after {
+    transform: rotate(-45deg);
   }
 
   &:hover {
-    border-color: #ffffff;
-
-    span {
-      &::before, &::after {
-        background-color: #ffffff;
-      }
+    &::before,
+    &::after {
+      background-color: var(--green-light_color);
     }
   }
 }
 
-@media only screen and (max-width: 400px) {
+.close-btn_bg {
+  @extend .close-btn;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08), 0 10px 20px rgba(0, 0, 0, 0.06);
+
+  &::before,
+  &::after {
+    width: 2px;
+    height: 20px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
   .close-btn {
     width: 35px;
     height: 35px;
 
-    span::after, span::before {
-      height: 16px;
+    &::after,
+    &::before {
+      height: 20px;
     }
   }
 }
