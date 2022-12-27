@@ -1,6 +1,6 @@
 {
   "name": "layout-proj_template",
-  "version": "1.0.0",
+  "version": "1.2.4",
   "private": true,
   "description": "Webpack template for page layout",
   "scripts": {
@@ -10,6 +10,9 @@
   "author": "foxhable",
   "license": "ISC",
   "devDependencies": {
+    "@fancyapps/ui": "^4.0.31",
+    "@types/fancybox": "^3.5.3",
+    "@types/yandex-maps": "^2.1.28",
     "css-loader": "^6.7.1",
     "html-loader": "^4.1.0",
     "html-webpack-plugin": "^5.5.0",
