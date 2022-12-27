@@ -1,14 +1,28 @@
 {
   "compilerOptions": {
     "module": "ESNext",
-    "target": "ES2021",
+    "target": "ESNext",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "sourceMap": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "npm/*": [ "node_modules/*" ],
+      "src/*": [ "src/*" ],
+      "images/*": [ "src/images/*" ],
+      "js/*": [ "src/js/*" ],
+      "layout/*": [ "src/layout/*" ],
+      "scss/*": [ "src/scss/*" ],
+      "fonts/*": [ "src/fonts/*" ]
+    }
   },
   "exclude": [
     "node_modules"
