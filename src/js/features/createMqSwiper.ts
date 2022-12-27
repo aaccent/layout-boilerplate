@@ -1,16 +1,19 @@
 import Swiper, { SwiperOptions } from 'swiper'
 
-interface ISwiperObj {
+export interface ISwiperObj {
 	selector: string,
-	options: SwiperOptions
+	options: SwiperOptions,
+	callback?: (ctx: IMqSwiperObj) => any,
+	callbackOnDestroy?: (ctx: IMqSwiperObj) => any,
 }
 
-interface IMqSwiperObj {
+export interface IMqSwiperObj {
 	isMqTrue: () => boolean,
 	status: boolean,
 	swiper: Swiper | boolean,
 	createSwiper: () => void,
-	destroySwiper: () => void
+	destroySwiper: () => void,
+	additional?: any
 }
 
 interface IMqSwiperOptions {
@@ -18,12 +21,10 @@ interface IMqSwiperOptions {
 	obj: ISwiperObj,
 }
 
-function createMqSwipers(swipers: IMqSwiperOptions[]): void {
-	if (swipers.length === 0) return
+const mqSwipers: IMqSwiperObj[] = []
 
-	const mqSwipers: IMqSwiperObj[] = []
-
-	swipers.forEach(swiper => mqSwipers.push(getMqSwiperObj(swiper.mq, swiper.obj)))
+function createMqSwiper(swiper: IMqSwiperOptions): void {
+	mqSwipers.push(getMqSwiperObj(swiper.mq, swiper.obj))
 
 	window.addEventListener('load', function () {
 		mqSwipers.forEach(swiper => {
@@ -52,6 +53,8 @@ function getMqSwiperObj(mq: string, swiperObj: ISwiperObj): IMqSwiperObj {
 
 			this.swiper = new Swiper(swiperObj.selector, swiperObj.options)
 			this.status = true
+
+			if (swiperObj.callback) swiperObj.callback(this)
 		},
 
 		destroySwiper() {
@@ -59,9 +62,11 @@ function getMqSwiperObj(mq: string, swiperObj: ISwiperObj): IMqSwiperObj {
 
 			this.swiper.destroy()
 			this.status = false
+
+			if (swiperObj.callbackOnDestroy) swiperObj.callbackOnDestroy(this)
 		},
 	}
 }
 
-export default createMqSwipers
+export default createMqSwiper
 export { IMqSwiperOptions }
