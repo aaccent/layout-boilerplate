@@ -16,11 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "npm/*": [ "node_modules/*" ],
-      "src/*": [ "src/*" ],
+      "@/*": [ "src/*" ],
       "images/*": [ "src/images/*" ],
-      "js/*": [ "src/js/*" ],
+      "scripts/*": [ "src/scripts/*" ],
       "layout/*": [ "src/layout/*" ],
-      "scss/*": [ "src/scss/*" ],
+      "styles/*": [ "src/styles/*" ],
       "fonts/*": [ "src/fonts/*" ]
     }
   },
