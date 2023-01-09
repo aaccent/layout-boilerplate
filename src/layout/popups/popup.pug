@@ -1,7 +1,0 @@
-include layout/utils
-
-mixin popup(name)
-    .popup(data-popup=name)&attributes(attributes)
-        .popup__body.opened
-            +btn('close-popup').close-btn
-            block
