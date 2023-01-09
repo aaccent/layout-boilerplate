@@ -1,14 +1,14 @@
 const path = require('path')
-const PugPlugin = require('pug-plugin')
 
 const getEntry = require('./webpack/getEntry')
 const { foldersNames, paths } = require('./webpack/paths.js')
 
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const sourcePath = path.join(__dirname, 'src')
 
-const keepPugFolderStructure = (pathData) => {
+const keepFolderStructure = (pathData) => {
 	const sourceFile = pathData.filename
 	const relativeFile = path.relative(sourcePath, sourceFile)
 	const { dir, name } = path.parse(relativeFile)
@@ -20,7 +20,9 @@ module.exports = async (env) => {
 
 	return {
 		mode: env.WEBPACK_SERVE ? 'development' : 'production',
-		entry: { ...entry },
+		entry: {
+			index: './src/index.ejs',
+		},
 		output: {
 			path: paths.dist._,
 			filename: ({ chunk }) => {
@@ -49,32 +51,41 @@ module.exports = async (env) => {
 		},
 		module: {
 			rules: [
-				{ test: /\.pug$/, loader: PugPlugin.loader },
-				{ test: /\.css$/i, use: [ "css-loader", "postcss-loader" ] },
+				{
+					test: /\.ejs$/,
+					use: [
+						{ loader: 'html-loader' },
+						{ loader: path.resolve('./webpack/ejs-loader-test.js') },
+					],
+				},
+				{
+					test: /\.css$/i,
+					use: env.WEBPACK_SERVE ? [ 'css-loader', 'postcss-loader' ] : [ 'postcss-loader' ],
+					type: 'asset/resource',
+					generator: { filename: 'css/style[ext]' },
+				},
 				{ test: /\.([cm]?ts|tsx)$/, loader: 'ts-loader' },
 				{
 					test: /\.(png|jpg|jpeg|ico|svg)/,
 					type: 'asset/resource',
-					generator: { filename: keepPugFolderStructure },
+					generator: { filename: keepFolderStructure },
 				},
 				{
 					test: /\.(woff|woff2)$/i,
 					type: 'asset/resource',
-					generator: { filename: keepPugFolderStructure },
+					generator: { filename: keepFolderStructure },
 				},
 			],
 		},
 		plugins: [
-			new PugPlugin({
-				pretty: true,
-				extractCss: {
-					filename: `${ foldersNames.css }/[name].css`,
-				},
+			new HtmlWebpackPlugin({
+				template: `!!${ path.resolve('./webpack/ejs-loader.js') }!./src/index.ejs`,
+				filename: 'index.html',
+				minify: false,
 			}),
 		],
 		optimization: {
 			minimizer: [
-				'...',
 				new ImageMinimizerPlugin({
 					generator: [
 						{
