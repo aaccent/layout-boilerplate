@@ -71,7 +71,7 @@ module.exports = async (env) => {
 		plugins: [
 			new PugPlugin({
 				pretty: true,
-				extractCss: {
+				css: {
 					filename: `${ foldersNames.css }/[name].css`,
 				},
 			}),
