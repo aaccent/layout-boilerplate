@@ -45,6 +45,10 @@ module.exports = async (env) => {
 				layout: paths.src.htmlParts,
 				styles: paths.src.styles,
 				fonts: paths.src.fonts,
+				components: paths.src.components,
+				features: paths.src.features,
+				pages: paths.src.pages,
+				ui: paths.src.ui,
 			},
 		},
 		module: {

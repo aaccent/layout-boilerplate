@@ -1,4 +1,4 @@
-import errors, { MapError } from 'scripts/features/y-maps/errors'
+import errors, { MapError } from '@/features/y-maps/errors'
 
 interface ILink {
 	/**

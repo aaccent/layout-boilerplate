@@ -1,4 +1,4 @@
-import { openPopup } from 'scripts/features/popups'
+import { openPopup } from 'features/popup'
 
 const forms = document.querySelectorAll<HTMLFormElement>('form[data-handler]')
 forms.forEach(form => {

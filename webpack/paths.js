@@ -14,7 +14,12 @@ const foldersNames = {
 	js: 'js',
 	styles: 'styles',
 	scripts: 'scripts',
-	htmlParts: 'layout'
+	htmlParts: 'layout',
+	static: 'static',
+	components: 'components',
+	features: 'features',
+	ui: 'ui',
+	pages: 'pages',
 }
 
 const rootPaths = {
@@ -26,11 +31,15 @@ const paths = {
 	src: {
 		/** Path of 'src' folder */
 		_: rootPaths.src,
-		img: path.join(rootPaths.src, foldersNames.img),
-		fonts: path.join(rootPaths.src, foldersNames.fonts),
+		img: path.join(rootPaths.src, foldersNames.static, foldersNames.img),
+		fonts: path.join(rootPaths.src, foldersNames.static, foldersNames.fonts),
 		scripts: path.join(rootPaths.src, foldersNames.scripts),
 		htmlParts: path.join(rootPaths.src, foldersNames.htmlParts),
-		styles: path.join(rootPaths.src, foldersNames.styles)
+		styles: path.join(rootPaths.src, foldersNames.styles),
+		features: path.join(rootPaths.src, foldersNames.features),
+		components: path.join(rootPaths.src, foldersNames.features),
+		pages: path.join(rootPaths.src, foldersNames.pages),
+		ui: path.join(rootPaths.src, foldersNames.ui),
 	},
 	dist: {
 		/** Path of 'dist' folder */

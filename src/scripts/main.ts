@@ -1,1 +1,1 @@
-import './features/popups'
+import 'features/popup'

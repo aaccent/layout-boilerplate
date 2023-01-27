@@ -17,14 +17,16 @@
     "paths": {
       "npm/*": [ "node_modules/*" ],
       "@/*": [ "src/*" ],
-      "images/*": [ "src/images/*" ],
-      "scripts/*": [ "src/scripts/*" ],
-      "layout/*": [ "src/layout/*" ],
-      "styles/*": [ "src/styles/*" ],
-      "fonts/*": [ "src/fonts/*" ]
+      "features/*": ["src/features/*"],
+      "components/*": ["src/components/*"],
+      "layout/*": ["src/layout/*"],
+      "pages/*": ["src/pages/*"],
+      "scripts/*": ["src/scripts/*"],
+      "images/*": ["src/static/images/*"],
+      "fonts/*": ["src/static/fonts/*"],
+      "styles/*": ["src/styles/*"],
+      "ui/*": ["src/ui/*"],
     }
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src"]
 }

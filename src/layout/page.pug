@@ -8,14 +8,13 @@ html(lang='ru')
 
             link(href=require('styles/styles.scss') rel="stylesheet")
     body
-        include general/header
-        include popups/popup
+        include general/header/template
 
         div.main-wrapper
             main.main
                 block main
 
-            include general/footer
+            include general/footer/template
 
         block scripts
             script(src=require('scripts/main.ts') type="module")
