@@ -5,7 +5,7 @@
   "description": "Webpack template for page layout",
   "scripts": {
     "build": "webpack",
-    "start": "webpack server --open"
+    "dev": "webpack server --open"
   },
   "author": "foxhable",
   "license": "ISC",
