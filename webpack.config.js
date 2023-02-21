@@ -12,7 +12,7 @@ const keepPugFolderStructure = (pathData) => {
 	const sourceFile = pathData.filename
 	const relativeFile = path.relative(sourcePath, sourceFile)
 	const { dir, name } = path.parse(relativeFile)
-	return `${ dir }/${ name }[ext]`
+	return `${ dir.replace('assets\\', '') }/${ name }[ext]`
 }
 
 module.exports = async (env) => {
