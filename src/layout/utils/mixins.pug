@@ -14,3 +14,9 @@ mixin btn(action)
 mixin popupBtn(popupName)
     +wrapBreak: button(type="button" data-action="popup" data-popup=popupName)&attributes(attributes)
         +wrapBreak: block
+
+mixin img(src)
+    +wrapBreak: img(src=src || "" alt="")&attributes(attributes)
+
+mixin anchor(href)
+    +wrapBreak: a(href=href || "")&attributes(attributes): block
