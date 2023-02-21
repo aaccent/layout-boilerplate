@@ -1,5 +1,6 @@
 html {
   overflow-x: hidden;
+  font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
@@ -12,10 +13,13 @@ html {
 .main-wrapper {
   position: relative;
   display: flex;
-  flex: 0 0;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
+}
+
+.main {
+  flex: 1 1 0;
 }
 
 .hidden {
