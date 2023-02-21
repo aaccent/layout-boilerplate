@@ -6,20 +6,21 @@ const filesNames = {
 }
 
 const foldersNames = {
-	fonts: 'fonts',
-	img: 'images',
 	src: 'src',
 	dist: 'dist',
+	fonts: 'fonts',
+	img: 'media',
 	css: 'css',
 	js: 'js',
 	styles: 'styles',
 	scripts: 'scripts',
-	htmlParts: 'layout',
-	static: 'static',
+	layout: 'layout',
+	assets: 'assets',
 	components: 'components',
 	features: 'features',
 	ui: 'ui',
 	pages: 'pages',
+	global: 'global',
 }
 
 const rootPaths = {
@@ -31,15 +32,16 @@ const paths = {
 	src: {
 		/** Path of 'src' folder */
 		_: rootPaths.src,
-		img: path.join(rootPaths.src, foldersNames.static, foldersNames.img),
-		fonts: path.join(rootPaths.src, foldersNames.static, foldersNames.fonts),
-		scripts: path.join(rootPaths.src, foldersNames.scripts),
-		htmlParts: path.join(rootPaths.src, foldersNames.htmlParts),
-		styles: path.join(rootPaths.src, foldersNames.styles),
-		features: path.join(rootPaths.src, foldersNames.features),
-		components: path.join(rootPaths.src, foldersNames.features),
+		img: path.join(rootPaths.src, foldersNames.assets, foldersNames.img),
+		fonts: path.join(rootPaths.src, foldersNames.assets, foldersNames.fonts),
+		global: path.join(rootPaths.src, foldersNames.global),
+		components: path.join(rootPaths.src, foldersNames.global, foldersNames.components),
+		features: path.join(rootPaths.src, foldersNames.global, foldersNames.features),
+		layout: path.join(rootPaths.src, foldersNames.global, foldersNames.layout),
+		ui: path.join(rootPaths.src, foldersNames.global, foldersNames.ui),
 		pages: path.join(rootPaths.src, foldersNames.pages),
-		ui: path.join(rootPaths.src, foldersNames.ui),
+		scripts: path.join(rootPaths.src, foldersNames.scripts),
+		styles: path.join(rootPaths.src, foldersNames.styles),
 	},
 	dist: {
 		/** Path of 'dist' folder */
