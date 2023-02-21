@@ -1,6 +1,6 @@
 {
   "name": "layout-proj_template",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "private": true,
   "description": "Webpack template for page layout",
   "scripts": {
