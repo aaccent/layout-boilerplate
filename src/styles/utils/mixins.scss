@@ -28,8 +28,9 @@
   transition-duration: $duration;
 }
 
-@mixin circle($size) {
-  width: $size;
-  height: $size;
+@mixin circle($diameter) {
+  --diameter: #{$diameter};
+  width: var(--diameter);
+  height: var(--diameter);
   border-radius: 50%;
 }
