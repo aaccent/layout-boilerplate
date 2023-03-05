@@ -12,6 +12,7 @@
   "devDependencies": {
     "@fancyapps/ui": "^4.0.31",
     "@types/fancybox": "^3.5.3",
+    "@types/google.maps": "^3.52.1",
     "@types/yandex-maps": "^2.1.28",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",

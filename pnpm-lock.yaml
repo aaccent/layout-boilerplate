@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@fancyapps/ui': ^4.0.31
   '@types/fancybox': ^3.5.3
+  '@types/google.maps': ^3.52.1
   '@types/yandex-maps': ^2.1.28
   css-loader: ^6.7.1
   html-webpack-plugin: ^5.5.0
@@ -22,6 +23,7 @@ specifiers:
 devDependencies:
   '@fancyapps/ui': 4.0.31
   '@types/fancybox': 3.5.3
+  '@types/google.maps': 3.52.1
   '@types/yandex-maps': 2.1.29
   css-loader: 6.7.3_webpack@5.75.0
   html-webpack-plugin: 5.5.0_webpack@5.75.0
@@ -207,6 +209,10 @@ packages:
     resolution: {integrity: sha512-VmlqpN7Ez/HvSHBdxALh/4gnkBEYLroYe6bTmXkJtQpPVkHTg1SzS/hIdzZKtKLjxeb6zPGK02RqnnB7VQIKtg==}
     dependencies:
       '@types/jquery': 3.5.16
+    dev: true
+
+  /@types/google.maps/3.52.1:
+    resolution: {integrity: sha512-O0MTQyE57zSWf04q/uNmKa3XHvgEj5pvDwJ4N3SqfYaHdusGVQWzkXkNYHeJPL09yHjvSdSy0WcDEX9C/do9kQ==}
     dev: true
 
   /@types/html-minifier-terser/6.1.0:
