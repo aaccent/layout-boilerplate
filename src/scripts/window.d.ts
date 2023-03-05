@@ -1,13 +1,13 @@
 export {}
 
-interface YMapMeta {
+interface MapMeta {
 	status: 'not_called' | 'downloading' | 'downloaded' | 'ready'
 }
 
 declare global {
-	declare var yMapMeta: YMapMeta
+	declare var mapMeta: MapMeta
 
 	interface Window {
-		yMapMeta: YMapMeta
+		mapMeta: MapMeta,
 	}
 }
