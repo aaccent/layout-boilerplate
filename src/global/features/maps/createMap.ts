@@ -1,5 +1,5 @@
 import { IPlacemarkOptions } from 'yandex-maps'
-import { loadYMap } from 'features/maps/loadMap'
+import { loadGMap, loadYMap } from 'features/maps/loadMap'
 
 export interface MapConfig {
 	setPlacemark?: boolean,
@@ -46,6 +46,26 @@ export async function createYMap(container: string | HTMLElement, props?: YMapCo
 	}
 
 	return map
+}
+
+export async function createGMap(container: string | HTMLElement, props?: MapConfig) {
+	const config = Object.assign(defaultConfig, props)
+
+	let map: google.maps.Map
+
+	let mapEl = getMapContainer(container)
+	const mapCenter = getMapCenter(mapEl)
+
+	function initMap(): void {
+		map = new google.maps.Map(mapEl, {
+			center: { lat: mapCenter[0], lng: mapCenter[1] },
+			zoom: config.zoom,
+		})
+	}
+
+	window.initMap = initMap
+
+	await loadGMap(mapEl.dataset.key)
 }
 
 interface MapContainer extends HTMLElement {

@@ -9,5 +9,6 @@ declare global {
 
 	interface Window {
 		mapMeta: MapMeta,
+		initMap: () => void,
 	}
 }

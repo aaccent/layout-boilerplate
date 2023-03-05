@@ -17,6 +17,13 @@ export async function loadYMap(apikey: string): Promise<void> {
 	window.mapMeta.status = 'ready'
 }
 
+export async function loadGMap(apikey: string): Promise<void> {
+	if (window.google?.maps?.Map !== undefined) return
+
+	const script = `https://maps.googleapis.com/maps/api/js?key=${ apikey }&callback=initMap`
+	await loadMap(script)
+}
+
 function loadScript(src: string, async = true): Promise<any> {
 	return new Promise((resolve, reject) => {
 		const scriptEl = document.createElement('script')
