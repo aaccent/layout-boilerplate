@@ -1,5 +1,3 @@
-import { openPopup } from 'features/popup'
-
 const forms = document.querySelectorAll<HTMLFormElement>('form[data-handler]')
 forms.forEach(form => {
 	form.addEventListener('submit', submitHandler)
@@ -13,8 +11,6 @@ function submitHandler(e: SubmitEvent) {
 	const form = e.currentTarget as HTMLFormElement
 	const formData = new FormData(form)
 
-	const thxPopupName = form.dataset.thx
-
 	const handlerPath = form.dataset.handler
 	if (!handlerPath) return console.error('data-handler should be not empty. Form element:\n', form)
 
@@ -24,15 +20,20 @@ function submitHandler(e: SubmitEvent) {
 		method: 'POST',
 		body: formData,
 	}).then((res) => {
-		if (!res.ok) return console.error(
-		  'Error while submitting form\n',
-		  'FormData:\n', formData, '\n',
-		  ' Response:\n', res,
-		)
+		if (!res.ok) {
+			window.openInfoError()
+			return console.error(
+				'Error while submitting form\n',
+				'FormData:\n', formData, '\n',
+				' Response:\n', res,
+			)
+		}
 
 		form.dispatchEvent(formSent)
 
-		if (thxPopupName) openPopup(thxPopupName)
+		if (form.dataset.title && form.dataset.text) {
+			window.openInfoPopup(form.dataset.title, form.dataset.text)
+		}
 	})
 }
 
