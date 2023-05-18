@@ -1,8 +1,10 @@
+import { disableScroll, enableScroll } from 'features/scroll'
+
 const popupBtns = document.querySelectorAll<HTMLButtonElement>('button[data-action="popup"]')
 const popups = document.querySelectorAll('.popup')
 
 popups.forEach(i => {
-	i.addEventListener('click', function(e) {
+	i.addEventListener('click', function (e) {
 		if (e.currentTarget !== e.target) return
 
 		closeActivePopup()
@@ -37,14 +39,16 @@ function popupBtnHandler(e: MouseEvent) {
 }
 
 export function openPopup(name: string) {
+	const activeHeader = document.querySelector('.header.active')
 	const targetPopup = document.querySelector<HTMLDivElement>(`.popup[data-popup="${ name }"]`)
 
 	if (!targetPopup) throw new Error(`Cant find .popup with data-popup="${ name }"`)
 
-	closeActivePopup()
+	closeActivePopup('process')
 	targetPopup.classList.add('opened')
 	targetPopup.dispatchEvent(openedPopupEvent)
 
+	if (!activeHeader) disableScroll()
 	document.body.addEventListener('keydown', escKeyHandler)
 }
 
@@ -55,10 +59,12 @@ function escKeyHandler(e: KeyboardEvent) {
 	document.body.removeEventListener('keydown', escKeyHandler)
 }
 
-export function closeActivePopup() {
+export function closeActivePopup(code?: any | 'process') {
+	const activeHeader = document.querySelector('.header.active')
 	const activePopup = document.querySelector('.popup.opened')
 	if (!activePopup) return
 
+	if (code !== 'process' && !activeHeader) enableScroll()
 	activePopup.classList.remove('opened')
 	activePopup.dispatchEvent(closedPopupEvent)
 }

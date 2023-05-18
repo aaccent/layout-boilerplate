@@ -1,4 +1,5 @@
-@forward 'ui/buttons/close-btn';
+@use 'styles/utils';
+@use 'ui/buttons/close-btn';
 
 .popup {
   padding: 15px;
@@ -23,7 +24,7 @@
     opacity: 1;
   }
 
-  &__body {
+  &__inner {
     margin: auto;
     position: relative;
   }
