@@ -1,3 +1,5 @@
+@use 'styles/utils';
+
 html {
   box-sizing: border-box;
 }
@@ -14,18 +16,19 @@ a {
 }
 
 button {
-  outline: none;
-  border: 0;
-  cursor: pointer;
-  background: transparent;
   padding: 0;
+  cursor: pointer;
   text-align: left;
+  color: inherit;
+  border: 0;
+  outline: none;
+  background: transparent;
 }
 
 input {
-  background: transparent;
-  outline: none;
   border: 0;
+  outline: none;
+  background: transparent;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -35,4 +38,10 @@ p {
 
 p + p {
   margin-top: 15px;
+}
+
+@media only screen and (max-width: utils.$tablet1200) {
+  p + p {
+    margin-top: 12px;
+  }
 }
