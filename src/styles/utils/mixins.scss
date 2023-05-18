@@ -1,6 +1,6 @@
 @use 'media' as *;
 
-@mixin reset-list {
+@mixin reset-list($display: none) {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -33,4 +33,42 @@
   width: var(--diameter);
   height: var(--diameter);
   border-radius: 50%;
+}
+
+@mixin adaptive-circle($diameter) {
+  @include adaptive(--diameter, $diameter);
+  width: var(--diameter);
+  height: var(--diameter);
+  border-radius: 50%;
+}
+
+@mixin adaptive-fz($property, $initialValue, $mod: 1, $unit: px, $min: 1.2rem, $max: 900rem) {
+  $value: calc(#{$initialValue} * #{$mod} * var(--screen-dif) + #{$initialValue} * 1#{$unit});
+  #{$property}: clamp(#{$min}, #{$value}, #{$max});
+}
+
+@mixin adaptive($property, $initialValue, $mod: 1, $unit: px) {
+  #{$property}: calc(#{$initialValue} * #{$mod} * var(--screen-dif) + #{$initialValue} * 1#{$unit})
+}
+
+@mixin custom-scroll($width, $track-color, $thumb-color, $height: initial) {
+  scrollbar-width: #{$width};
+  scrollbar-color: #{$thumb-color};
+
+  &::-webkit-scrollbar {
+    width: #{$width};
+    height: #{$height};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #{$thumb-color};
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #{$track-color};
+  }
+}
+
+@mixin transparent-scroll() {
+  @include custom-scroll(0, transparent, transparent, 0);
 }
