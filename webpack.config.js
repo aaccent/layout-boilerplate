@@ -93,7 +93,7 @@ module.exports = async (env) => {
 							options: {
 								encodeOptions: {
 									webp: {
-										quality: 65,
+										quality: 80,
 									},
 								},
 							},
