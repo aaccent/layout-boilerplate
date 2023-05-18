@@ -67,6 +67,11 @@ module.exports = async (env) => {
 					type: 'asset/resource',
 					generator: { filename: keepPugFolderStructure },
 				},
+				{
+					test: /\.(webm|mp4)$/i,
+					type: 'asset/resource',
+					generator: { filename: keepPugFolderStructure },
+				}
 			],
 		},
 		plugins: [
