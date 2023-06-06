@@ -14,8 +14,8 @@
     "paths": {
       "npm/*": [ "node_modules/*" ],
       "@/*": [ "src/*" ],
-      "fonts/*": ["src/static/fonts/*"],
-      "media/*": ["src/static/media/*"],
+      "fonts/*": ["src/assets/fonts/*"],
+      "media/*": ["src/assets/media/*"],
       "global/*": ["src/global/*"],
       "components/*": ["src/global/components/*"],
       "features/*": ["src/global/features/*"],
