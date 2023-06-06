@@ -16,7 +16,7 @@ const keepPugFolderStructure = (pathData) => {
 }
 
 module.exports = async (env) => {
-	const entry = await getEntry([ paths.src._ ])
+	const entry = await getEntry([ paths.src.pages ])
 
 	return {
 		mode: env.WEBPACK_SERVE ? 'development' : 'production',
