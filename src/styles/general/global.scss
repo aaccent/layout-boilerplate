@@ -43,11 +43,3 @@ html.disable-scroll {
 .swiper-slide {
   box-sizing: border-box !important;
 }
-
-@media only screen and (max-width: 750px) {
-  .disable-scroll {
-    body {
-      padding-right: 0;
-    }
-  }
-}
