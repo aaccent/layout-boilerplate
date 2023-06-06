@@ -1,8 +1,8 @@
 const path = require('path')
 const PugPlugin = require('pug-plugin')
 
-const getEntry = require('./webpack/getEntry')
-const { foldersNames, paths } = require('./webpack/paths.js')
+const getEntry = require('./webpack/getEntry.cjs')
+const { foldersNames, paths } = require('./webpack/paths.cjs')
 
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 

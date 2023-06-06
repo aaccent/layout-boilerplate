@@ -1,5 +1,5 @@
-const files = require('./files')
-const { foldersNames } = require('./paths')
+const files = require('./files.cjs')
+const { foldersNames } = require('./paths.cjs')
 
 module.exports = async (pathsArr) => {
 	const result = {}
