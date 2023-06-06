@@ -22,18 +22,27 @@ function convertPaths(arrPaths) {
 	})
 }
 
-function getFilesWithExt(arrPaths, ext) {
+/**
+ * @param {string[]} paths
+ * @param {string} ext
+ * @param {boolean} subFolders
+ * @return {string[]}
+ * */
+function getFilesWithExt(paths, ext, subFolders = false) {
 	const result = []
-	arrPaths.forEach(p => {
+	paths.forEach(p => {
 		const regex = new RegExp(`\\.${ext}$`)
 		const arrItems = getDirItems(p)
 
 		arrItems.forEach(fileName => {
-			const pathString = path.join(p, fileName)
+			const itemPath = path.join(p, fileName)
 
-			if (isDirectory(pathString)) return
+			if (isDirectory(itemPath)) {
+				subFolders && result.push(...getFilesWithExt([itemPath], ext))
+				return
+			}
 
-			if (regex.test(fileName)) result.push(pathString)
+			if (regex.test(fileName)) result.push(itemPath)
 		})
 	})
 
