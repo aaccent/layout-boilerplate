@@ -17,6 +17,7 @@ const keepPugFolderStructure = (pathData) => {
 
 module.exports = async (env) => {
 	const entry = await getEntry([ paths.src.pages ])
+	const isDev = process.env.NODE_ENV === 'development'
 
 	return {
 		mode: env.WEBPACK_SERVE ? 'development' : 'production',
@@ -54,7 +55,11 @@ module.exports = async (env) => {
 		},
 		module: {
 			rules: [
-				{ test: /\.pug$/, loader: PugPlugin.loader },
+				{
+					test: /\.pug$/,
+					loader: PugPlugin.loader,
+					options: { data: { isDev } },
+				},
 				{ test: /\.(css|scss|sass)$/, use: [ 'css-loader', 'sass-loader' ] },
 				{ test: /\.([cm]?ts|tsx)$/, loader: 'ts-loader' },
 				{
