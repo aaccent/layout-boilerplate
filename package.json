@@ -6,7 +6,7 @@
   "description": "Webpack template for page layout",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "dev": "cross-env NODE_ENV=development webpack server --open"
+    "dev": "cross-env NODE_ENV=development webpack server"
   },
   "author": "foxhable",
   "license": "ISC",
