@@ -5,8 +5,8 @@
   "private": true,
   "description": "Webpack template for page layout",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack server --open"
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack server --open"
   },
   "author": "foxhable",
   "license": "ISC",
