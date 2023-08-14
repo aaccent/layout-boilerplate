@@ -35,22 +35,6 @@
   border-radius: 50%;
 }
 
-@mixin adaptive-circle($diameter) {
-  @include adaptive(--diameter, $diameter);
-  width: var(--diameter);
-  height: var(--diameter);
-  border-radius: 50%;
-}
-
-@mixin adaptive-fz($property, $initialValue, $mod: 1, $unit: px, $min: 1.2rem, $max: 900rem) {
-  $value: calc(#{$initialValue} * #{$mod} * var(--screen-dif) + #{$initialValue} * 1#{$unit});
-  #{$property}: clamp(#{$min}, #{$value}, #{$max});
-}
-
-@mixin adaptive($property, $initialValue, $mod: 1, $unit: px) {
-  #{$property}: calc(#{$initialValue} * #{$mod} * var(--screen-dif) + #{$initialValue} * 1#{$unit})
-}
-
 @mixin custom-scroll($width, $track-color, $thumb-color, $height: initial) {
   scrollbar-width: #{$width};
   scrollbar-color: #{$thumb-color};
