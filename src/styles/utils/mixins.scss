@@ -28,6 +28,12 @@
   transition-duration: $duration;
 }
 
+@mixin square($size) {
+  --size: #{$size};
+  width: var(--size);
+  height: var(--size);
+}
+
 @mixin circle($diameter) {
   --diameter: #{$diameter};
   width: var(--diameter);
