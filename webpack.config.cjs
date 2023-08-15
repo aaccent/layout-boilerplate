@@ -15,7 +15,7 @@ const keepPugFolderStructure = (pathData) => {
   return `${dir.replace('assets\\', '')}/${name}[ext]`
 }
 
-const pagesRegex = /\\pages\\([\w_-]+)\\/
+const pagesRegex = /[\\/]pages[\\/]([\w_-]+)[\\/]/
 
 module.exports = async () => {
   const entry = await getEntry([ paths.src.pages ])
