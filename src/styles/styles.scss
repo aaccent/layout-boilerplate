@@ -5,11 +5,11 @@
 @use 'general/global';
 
 // Popup
-@use '../features/popup/popup';
+@use 'features/popup/popup';
 
 // Ui
 @use 'ui/buttons/close-btn';
 
 // Page
-@use '../layout/header/header';
-@use '../layout/footer/footer';
+@use 'layout/header/header';
+@use 'layout/footer/footer';
