@@ -1,4 +1,5 @@
-import Swiper, { SwiperOptions } from 'swiper'
+import Swiper from 'swiper'
+import { SwiperOptions } from 'swiper/types'
 
 export interface ISwiperObj {
 	selector: string,
