@@ -12,7 +12,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "src/*": [ "./src/*" ],
+      "@/*": [ "./src/*" ],
       "npm/*": [ "node_modules/*" ],
       "assets/*": ["src/assets/*"],
       "globals/*": ["src/globals/*"],
