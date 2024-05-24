@@ -47,7 +47,7 @@ module.exports = async () => {
     resolve: {
       extensions: [ '.js', '.ts' ],
       alias: {
-        '@': paths.src._,
+        'src': paths.src._,
         npm: path.resolve(process.cwd(), 'node_modules'),
         assets: paths.src.assets,
         globals: paths.src.globals,
