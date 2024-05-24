@@ -36,6 +36,8 @@ const longHandProps = [
   '-moz-column-gap',
   'column-gap',
   'row-gap',
+  '--diameter',
+  '--size',
 ]
 
 const targetProps = [ ...shorthandProps, ...longHandProps, 'font', 'font-size' ]
