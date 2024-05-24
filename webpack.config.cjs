@@ -117,6 +117,17 @@ module.exports = async () => {
                 },
               },
             },
+            {
+              preset: 'webp-full',
+              implementation: ImageMinimizerPlugin.sharpGenerate,
+              options: {
+                encodeOptions: {
+                  webp: {
+                    quality: 100,
+                  },
+                },
+              },
+            },
           ],
         }),
       ],
