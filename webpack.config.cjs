@@ -70,7 +70,7 @@ module.exports = async () => {
         { test: /\.(css|scss|sass)$/, use: [ 'css-loader', 'postcss-loader', 'sass-loader' ] },
         { test: /\.([cm]?ts|tsx)$/, loader: 'ts-loader' },
         {
-          test: /\.(png|jpg|jpeg|ico|svg)/,
+          test: /\.(png|jpg|jpeg|ico|svg|webp)/,
           type: 'asset/resource',
           generator: { filename: keepPugFolderStructure },
         },
