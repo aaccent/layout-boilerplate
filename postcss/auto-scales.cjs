@@ -58,8 +58,7 @@ function declHandler(decl) {
   if (decl.prop === 'font') {
     if (!cssVariableRegex.test(decl.value)) return
     const fontVariableName = decl.value.match(cssVariableRegex)[1]
-    const fontSizeVariableName = allVariablesValues[fontVariableName]?.match(
-      cssVariableRegex)[1]
+    const fontSizeVariableName = allVariablesValues[fontVariableName]?.match(cssVariableRegex)?.[1]
 
     if (fontSizeVariableName && !fontVars.includes(fontSizeVariableName)) {
       fontVars.push(fontSizeVariableName)
