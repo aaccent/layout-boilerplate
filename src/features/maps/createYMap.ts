@@ -1,6 +1,6 @@
-import { loadScript } from 'features/loadScript'
+import { loadScript } from '@/features/loadScript'
 import { IPlacemarkOptions } from 'yandex-maps'
-import { defaultConfig, getMapCenter, getMapContainer, MapConfig } from 'features/maps/mapGeneral'
+import { defaultConfig, getMapCenter, getMapContainer, MapConfig } from '@/features/maps/mapGeneral'
 
 export interface YMapConfig extends MapConfig {
 	placemarkOptions?: IPlacemarkOptions,

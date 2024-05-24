@@ -11,8 +11,8 @@ const sourcePath = path.join(__dirname, 'src')
 const keepPugFolderStructure = (pathData) => {
   const sourceFile = pathData.filename
   const relativeFile = path.relative(sourcePath, sourceFile)
-  const { dir, name } = path.parse(relativeFile)
-  return `${dir.replace('assets\\', '')}/${name}[ext]`
+  const { name } = path.parse(relativeFile)
+  return `${name}[ext]`
 }
 
 const pagesRegex = /[\\/]pages[\\/]([\w_-]+)[\\/]/
@@ -47,11 +47,10 @@ module.exports = async () => {
     resolve: {
       extensions: [ '.js', '.ts' ],
       alias: {
-        src: paths.src._,
+        '@': paths.src._,
         npm: path.resolve(process.cwd(), 'node_modules'),
-        media: paths.src.img,
-        fonts: paths.src.fonts,
-        global: paths.src.global,
+        assets: paths.src.assets,
+        globals: paths.src.globals,
         components: paths.src.components,
         features: paths.src.features,
         layout: paths.src.layout,

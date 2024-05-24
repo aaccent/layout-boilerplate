@@ -1,5 +1,5 @@
-import { loadScript, waitScriptStatus } from 'features/loadScript'
-import { defaultConfig, getMapCenter, getMapContainer, MapConfig, MapContainer } from 'features/maps/mapGeneral'
+import { loadScript, waitScriptStatus } from '@/features/loadScript'
+import { defaultConfig, getMapCenter, getMapContainer, MapConfig, MapContainer } from '@/features/maps/mapGeneral'
 
 export async function loadGMap(apikey: string): Promise<void> {
 	if (window.google?.maps?.Map !== undefined) return

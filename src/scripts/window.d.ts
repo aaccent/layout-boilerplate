@@ -1,6 +1,6 @@
-import { InfoPopupProps } from 'components/popups/InfoPopup'
-import { AjaxFetchProps } from 'features/ajax-fetch'
-import { ScriptStatus, ScriptTypes } from 'features/loadScript'
+import { InfoPopupProps } from '@/ui/popups/InfoPopup'
+import { AjaxFetchProps } from '@/features/ajax-fetch'
+import { ScriptStatus, ScriptTypes } from '@/features/loadScript'
 
 declare global {
 	interface Window {

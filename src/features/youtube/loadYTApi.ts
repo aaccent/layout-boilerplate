@@ -1,4 +1,4 @@
-import { loadScript, waitScriptStatus } from 'features/loadScript'
+import { loadScript, waitScriptStatus } from '@/features/loadScript'
 
 export async function loadYTApi() {
 	await loadScript('https://www.youtube.com/iframe_api', 'ytApi')
