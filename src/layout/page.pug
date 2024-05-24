@@ -8,13 +8,13 @@ html(lang='ru')
 
             link(href=require('styles/styles.scss') rel="stylesheet")
     body
-        include general/header/template
+        include header/header
 
         div.main-wrapper
             main.main
                 block main
 
-            include general/footer/template
+            include footer/footer
 
         block scripts
             script(src=require('scripts/main.ts') type="module")
