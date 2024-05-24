@@ -11,8 +11,8 @@ const sourcePath = path.join(__dirname, 'src')
 const keepPugFolderStructure = (pathData) => {
   const sourceFile = pathData.filename
   const relativeFile = path.relative(sourcePath, sourceFile)
-  const { name } = path.parse(relativeFile)
-  return `${name}[ext]`
+  const { dir, name } = path.parse(relativeFile)
+  return `${dir.replace('assets\\', '')}/${name}[ext]`
 }
 
 const pagesRegex = /[\\/]pages[\\/]([\w_-]+)[\\/]/
