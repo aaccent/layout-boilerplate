@@ -21,7 +21,6 @@ function submitHandler(e: SubmitEvent) {
 		body: formData,
 	}).then((res) => {
 		if (!res.ok) {
-			window.openInfoError()
 			return console.error(
 				'Error while submitting form\n',
 				'FormData:\n', formData, '\n',
@@ -30,10 +29,6 @@ function submitHandler(e: SubmitEvent) {
 		}
 
 		form.dispatchEvent(formSent)
-
-		if (form.dataset.title && form.dataset.text) {
-			window.openInfoPopup(form.dataset.title, form.dataset.text)
-		}
 	})
 }
 
