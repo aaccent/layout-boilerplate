@@ -62,3 +62,17 @@
 @mixin transparent-scroll() {
   @include custom-scroll(0, transparent, transparent, 0);
 }
+
+@mixin hover() {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+}
