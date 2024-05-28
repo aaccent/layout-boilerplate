@@ -19,4 +19,4 @@ mixin img(src)
     +wrapBreak: img(src=src || "" alt="")&attributes(attributes)
 
 mixin anchor(href)
-    +wrapBreak: a(href=href || "")&attributes(attributes): block
+    +wrapBreak: a(href=href || "#")&attributes(attributes): block
