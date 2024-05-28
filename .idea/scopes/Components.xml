@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Components" pattern="file[layout-boilerplate]:src/components//*||file[layout-boilerplate]:src/ui//*||file[layout-boilerplate]:src/pages//components//*" />
+</component>
