@@ -76,3 +76,11 @@
     }
   }
 }
+
+@mixin only-hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
