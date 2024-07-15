@@ -1,48 +1,40 @@
 /**  @type {Array<keyof import('CSS').StandardShorthandProperties>}*/
-const shorthandProps = [
-  'padding',
-  'margin',
-  'inset',
-  'border-radius',
-  'border-width',
-  'gap',
-  'grid-template-columns',
-]
+const shorthandProps = ['padding', 'margin', 'inset', 'border-radius', 'border-width', 'gap', 'grid-template-columns']
 
 /**  @type {Array<keyof import('CSS').StandardLonghandProperties>}*/
 const longHandProps = [
-  'width',
-  'min-width',
-  'max-width',
-  'height',
-  'min-height',
-  'max-height',
-  'padding-top',
-  'padding-right',
-  'padding-bottom',
-  'padding-left',
-  'margin-top',
-  'margin-right',
-  'margin-bottom',
-  'margin-left',
-  'top',
-  'right',
-  'bottom',
-  'left',
-  'border-top-left-radius',
-  'border-top-right-radius',
-  'border-bottom-right-radius',
-  'border-bottom-left-radius',
-  '-moz-column-gap',
-  'column-gap',
-  'row-gap',
-  '--diameter',
-  '--size',
+    'width',
+    'min-width',
+    'max-width',
+    'height',
+    'min-height',
+    'max-height',
+    'padding-top',
+    'padding-right',
+    'padding-bottom',
+    'padding-left',
+    'margin-top',
+    'margin-right',
+    'margin-bottom',
+    'margin-left',
+    'top',
+    'right',
+    'bottom',
+    'left',
+    'border-top-left-radius',
+    'border-top-right-radius',
+    'border-bottom-right-radius',
+    'border-bottom-left-radius',
+    '-moz-column-gap',
+    'column-gap',
+    'row-gap',
+    '--diameter',
+    '--size',
 ]
 
-const targetProps = [ ...shorthandProps, ...longHandProps, 'font', 'font-size' ]
+const targetProps = [...shorthandProps, ...longHandProps, 'font', 'font-size']
 
-const allowedUnits = [ 'rem', 'px' ]
+const allowedUnits = ['rem', 'px']
 
 /** @typedef {'startsWith' | 'includes'} RuleCheckType */
 
@@ -70,20 +62,18 @@ const allowedUnits = [ 'rem', 'px' ]
 
 /** @type {PluginParams} */
 let defaultOpts = {
-  dodgeSelectors: [],
-  fontSizeMod: 4,
-  defaultMod: 1,
-  maxMedia: 9999,
-  minMedia: 0,
-  initWidth: [
-    { width: 1920 },
-  ],
+    dodgeSelectors: [],
+    fontSizeMod: 4,
+    defaultMod: 1,
+    maxMedia: 9999,
+    minMedia: 0,
+    initWidth: [{ width: 1920 }],
 }
 
 module.exports = {
-  shorthandProps,
-  longHandProps,
-  targetProps,
-  allowedUnits,
-  defaultOpts,
+    shorthandProps,
+    longHandProps,
+    targetProps,
+    allowedUnits,
+    defaultOpts,
 }

@@ -1,29 +1,29 @@
 {
-  "compilerOptions": {
-    "module": "ESNext",
-    "target": "ESNext",
-    "lib": ["DOM", "ESNext"],
-    "sourceMap": true,
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [ "./src/*" ],
-      "npm/*": [ "node_modules/*" ],
-      "assets/*": ["src/assets/*"],
-      "globals/*": ["src/globals/*"],
-      "components/*": ["src/components/*"],
-      "features/*": ["src/features/*"],
-      "layout/*": ["src/layout/*"],
-      "ui/*": ["src/ui/*"],
-      "pages/*": ["src/pages/*"],
-      "scripts/*": ["src/scripts/*"],
-      "styles/*": ["src/styles/*"],
-    }
-  },
-  "include": ["src"]
+    "compilerOptions": {
+        "module": "ESNext",
+        "target": "ESNext",
+        "lib": ["DOM", "ESNext"],
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "skipLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"],
+            "npm/*": ["node_modules/*"],
+            "assets/*": ["src/assets/*"],
+            "globals/*": ["src/globals/*"],
+            "components/*": ["src/components/*"],
+            "features/*": ["src/features/*"],
+            "layout/*": ["src/layout/*"],
+            "ui/*": ["src/ui/*"],
+            "pages/*": ["src/pages/*"],
+            "scripts/*": ["src/scripts/*"],
+            "styles/*": ["src/styles/*"]
+        }
+    },
+    "include": ["src"]
 }

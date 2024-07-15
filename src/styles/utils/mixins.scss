@@ -1,86 +1,86 @@
 @use 'media' as *;
 
 @mixin reset-list($display: none) {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 @mixin clear-list {
-  @include reset-list;
-  li {
-    padding-left: 0;
-    text-indent: initial;
-    color: var(--body_font);
+    @include reset-list;
+    li {
+        padding-left: 0;
+        text-indent: initial;
+        color: var(--body_font);
 
-    &::before {
-      display: none;
+        &::before {
+            display: none;
+        }
     }
-  }
-  li + li {
-    margin-top: 0;
-  }
+    li + li {
+        margin-top: 0;
+    }
 }
 
-@mixin transition($property, $duration: .3s, $timing: ease-in-out) {
-  transition-property: $property;
-  transition-timing-function: $timing;
-  transition-duration: $duration;
+@mixin transition($property, $duration: 0.3s, $timing: ease-in-out) {
+    transition-property: $property;
+    transition-timing-function: $timing;
+    transition-duration: $duration;
 }
 
 @mixin square($size) {
-  --size: #{$size};
-  width: var(--size);
-  height: var(--size);
+    --size: #{$size};
+    width: var(--size);
+    height: var(--size);
 }
 
 @mixin circle($diameter) {
-  --diameter: #{$diameter};
-  width: var(--diameter);
-  height: var(--diameter);
-  border-radius: 50%;
+    --diameter: #{$diameter};
+    width: var(--diameter);
+    height: var(--diameter);
+    border-radius: 50%;
 }
 
 @mixin custom-scroll($width, $track-color, $thumb-color, $height: initial) {
-  scrollbar-width: #{$width};
-  scrollbar-color: #{$thumb-color};
+    scrollbar-width: #{$width};
+    scrollbar-color: #{$thumb-color};
 
-  &::-webkit-scrollbar {
-    width: #{$width};
-    height: #{$height};
-  }
+    &::-webkit-scrollbar {
+        width: #{$width};
+        height: #{$height};
+    }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: #{$thumb-color};
-  }
+    &::-webkit-scrollbar-thumb {
+        background-color: #{$thumb-color};
+    }
 
-  &::-webkit-scrollbar-track {
-    background-color: #{$track-color};
-  }
+    &::-webkit-scrollbar-track {
+        background-color: #{$track-color};
+    }
 }
 
 @mixin transparent-scroll() {
-  @include custom-scroll(0, transparent, transparent, 0);
+    @include custom-scroll(0, transparent, transparent, 0);
 }
 
 @mixin hover() {
-  @media (hover: hover) {
-    &:hover {
-      @content;
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
     }
-  }
 
-  @media (hover: none) {
-    &:active {
-      @content;
+    @media (hover: none) {
+        &:active {
+            @content;
+        }
     }
-  }
 }
 
 @mixin only-hover {
-  @media (hover: hover) {
-    &:hover {
-      @content;
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
     }
-  }
 }

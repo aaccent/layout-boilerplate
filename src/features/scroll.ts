@@ -3,9 +3,7 @@ const html = document.documentElement
 export function toggleScroll() {
     html.classList.toggle('disable-scroll')
 
-    html.classList.contains('disable-scroll')
-        ? disableScroll()
-        : enableScroll()
+    html.classList.contains('disable-scroll') ? disableScroll() : enableScroll()
 }
 
 export function enableScroll() {

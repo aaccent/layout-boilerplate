@@ -1,22 +1,22 @@
-mixin lineBreak()
+mixin lineBreak
     |
     |
 
-mixin wrapBreak()
+mixin wrapBreak
     +lineBreak
     block
     +lineBreak
 
 mixin btn(action)
-    +wrapBreak: button(type="button" data-action=action)&attributes(attributes)
+    +wrapBreak: button(type='button', data-action=action)&attributes(attributes)
         +wrapBreak: block
 
 mixin popupBtn(popupName)
-    +wrapBreak: button(type="button" data-action="popup" data-popup=popupName)&attributes(attributes)
+    +wrapBreak: button(type='button', data-action='popup', data-popup=popupName)&attributes(attributes)
         +wrapBreak: block
 
 mixin img(src)
-    +wrapBreak: img(src=src || "" alt="")&attributes(attributes)
+    +wrapBreak: img(src=src || '', alt='')&attributes(attributes)
 
 mixin anchor(href)
-    +wrapBreak: a(href=href || "#")&attributes(attributes): block
+    +wrapBreak: a(href=href || '#')&attributes(attributes): block

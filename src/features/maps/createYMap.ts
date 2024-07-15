@@ -3,47 +3,47 @@ import { IPlacemarkOptions } from 'yandex-maps'
 import { defaultConfig, getMapCenter, getMapContainer, MapConfig } from '@/features/maps/mapGeneral'
 
 export interface YMapConfig extends MapConfig {
-	placemarkOptions?: IPlacemarkOptions,
+    placemarkOptions?: IPlacemarkOptions
 }
 
 const defaultYConfig: Required<YMapConfig> = {
-	...defaultConfig,
-	placemarkOptions: {
-		preset: 'islands#redIcon',
-	},
+    ...defaultConfig,
+    placemarkOptions: {
+        preset: 'islands#redIcon',
+    },
 }
 
 export async function loadYMap(apikey: string): Promise<void> {
-	if (window.ymaps !== undefined) return
+    if (window.ymaps !== undefined) return
 
-	const script = `https://api-maps.yandex.ru/2.1/?apikey=${ apikey }&lang=ru_RU`
-	await loadScript(script, 'yaMap')
+    const script = `https://api-maps.yandex.ru/2.1/?apikey=${apikey}&lang=ru_RU`
+    await loadScript(script, 'yaMap')
 
-	await ymaps.ready()
+    await ymaps.ready()
 }
 
 export async function createYMap(container: string | HTMLElement, props?: YMapConfig) {
-	const config = Object.assign(defaultYConfig, props)
+    const config = Object.assign(defaultYConfig, props)
 
-	let mapEl = getMapContainer(container)
-	const mapCenter = getMapCenter(mapEl)
+    let mapEl = getMapContainer(container)
+    const mapCenter = getMapCenter(mapEl)
 
-	await loadYMap(mapEl.dataset.key)
+    await loadYMap(mapEl.dataset.key)
 
-	const map = new ymaps.Map(mapEl, {
-		center: mapCenter,
-		zoom: config.zoom,
-	})
+    const map = new ymaps.Map(mapEl, {
+        center: mapCenter,
+        zoom: config.zoom,
+    })
 
-	if (!config.zoomByWheel) map.behaviors.disable('scrollZoom')
+    if (!config.zoomByWheel) map.behaviors.disable('scrollZoom')
 
-	if (config.setPlacemark) {
-		const placemark = new ymaps.Placemark(map.getCenter(), {}, config.placemarkOptions)
+    if (config.setPlacemark) {
+        const placemark = new ymaps.Placemark(map.getCenter(), {}, config.placemarkOptions)
 
-		map.geoObjects.add(placemark)
-	}
+        map.geoObjects.add(placemark)
+    }
 
-	window.globalScripts.yaMap = 'created'
+    window.globalScripts.yaMap = 'created'
 
-	return map
+    return map
 }

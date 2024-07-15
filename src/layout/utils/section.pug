@@ -1,35 +1,35 @@
 mixin section(props)
-	-
-		props = Object.assign({
-			container: true,
-		}, props || {},)
+    -
+        props = Object.assign({
+        	container: true,
+        }, props || {},)
 
-	section.section&attributes(attributes)
-		if props.container
-			.container: block
-		else
-			block
+    section.section&attributes(attributes)
+        if props.container
+            .container: block
+        else
+            block
 
 mixin b-block(props)
-	-
-		props = Object.assign({
-			container: true,
-		}, props || {})
+    -
+        props = Object.assign({
+        	container: true,
+        }, props || {})
 
-	.block&attributes(attributes)
-		if props.container
-			.container: block
-		else
-			block
+    .block&attributes(attributes)
+        if props.container
+            .container: block
+        else
+            block
 
 mixin sectionBlock(props)
-	-
-		props = Object.assign({
-			container: true,
-		}, props || {})
+    -
+        props = Object.assign({
+        	container: true,
+        }, props || {})
 
-	.section&attributes(attributes)
-		if props.container
-			.container: block
-		else
-			block
+    .section&attributes(attributes)
+        if props.container
+            .container: block
+        else
+            block
