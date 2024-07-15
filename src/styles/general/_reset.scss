@@ -1,52 +1,16 @@
 @use 'styles/utils';
 
-html {
-    box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
-
 a {
     text-decoration: none;
-    color: inherit;
 }
 
 button {
-    padding: 0;
-    cursor: pointer;
     text-align: left;
-    color: inherit;
-    border: 0;
     outline: none;
     background: transparent;
 }
 
 input {
-    border: 0;
     outline: none;
     background: transparent;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-    margin: 0;
-}
-
-p + p {
-    margin-top: 15px;
-}
-
-@media only screen and (max-width: utils.$tablet1200) {
-    p + p {
-        margin-top: 12px;
-    }
 }
