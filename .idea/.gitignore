@@ -3,3 +3,9 @@
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+# other
+codeStyles
+inspectionProfiles/Project_Default.xml
+developer-tools.xml
+git_toolbox_blame.xml
+git_toolbox_prj.xml
