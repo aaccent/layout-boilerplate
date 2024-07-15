@@ -1,3 +1,5 @@
+@use 'styles/utils';
+
 html {
     overflow-x: clip;
     font-size: 62.5%;
@@ -42,4 +44,16 @@ html.disable-scroll {
 .swiper-wrapper,
 .swiper-slide {
     box-sizing: border-box !important;
+}
+
+.content {
+    p + p {
+        margin-top: 15px;
+    }
+
+    @media only screen and (max-width: utils.$tablet1200) {
+        p + p {
+            margin-top: 12px;
+        }
+    }
 }
