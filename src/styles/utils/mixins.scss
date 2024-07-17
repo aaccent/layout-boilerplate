@@ -1,27 +1,5 @@
 @use 'media' as *;
 
-@mixin reset-list($display: none) {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-@mixin clear-list {
-    @include reset-list;
-    li {
-        padding-left: 0;
-        text-indent: initial;
-        color: var(--body_font);
-
-        &::before {
-            display: none;
-        }
-    }
-    li + li {
-        margin-top: 0;
-    }
-}
-
 @mixin transition($property, $duration: 0.3s, $timing: ease-in-out) {
     transition-property: $property;
     transition-timing-function: $timing;
