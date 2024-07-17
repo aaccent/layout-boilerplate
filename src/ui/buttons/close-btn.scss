@@ -4,11 +4,11 @@
     position: absolute;
     top: 0;
     right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 40px;
     height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &::before,
     &::after {
@@ -16,8 +16,8 @@
         position: absolute;
         width: 2.6px;
         height: 26px;
-        border-radius: 4px;
         background-color: #909090;
+        border-radius: 4px;
         @include utils.transition(background-color);
     }
 
@@ -39,11 +39,11 @@
 
 .close-btn_bg {
     @extend .close-btn;
-    border-radius: 50%;
-    background-color: #ffffff;
     box-shadow:
         0 0 10px rgba(0, 0, 0, 0.08),
         0 10px 20px rgba(0, 0, 0, 0.06);
+    background-color: #ffffff;
+    border-radius: 50%;
 
     &::before,
     &::after {

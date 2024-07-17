@@ -1,9 +1,9 @@
 @use 'styles/utils';
 
 html {
+    scroll-behavior: smooth;
     overflow-x: clip;
     font-size: 62.5%;
-    scroll-behavior: smooth;
 }
 
 .container {
@@ -14,10 +14,10 @@ html {
 
 .main-wrapper {
     position: relative;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 100vh;
 }
 
 .main {

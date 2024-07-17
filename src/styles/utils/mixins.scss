@@ -1,9 +1,9 @@
 @use 'media' as *;
 
 @mixin transition($property, $duration: 0.3s, $timing: ease-in-out) {
-    transition-property: $property;
     transition-timing-function: $timing;
     transition-duration: $duration;
+    transition-property: $property;
 }
 
 @mixin square($size) {
