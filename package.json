@@ -28,6 +28,7 @@
     "postcss": "^8.4.38",
     "postcss-loader": "^8.1.1",
     "prettier": "^3.3.3",
+    "prettier-plugin-css-order": "^2.1.2",
     "pug-plugin": "^5.2.0",
     "sass": "^1.77.2",
     "sass-loader": "^14.2.1",
