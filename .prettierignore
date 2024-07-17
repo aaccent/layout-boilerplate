@@ -19,3 +19,6 @@ package.json
 .lintstagedrc.yaml
 .prettierignore
 .prettierrc.toml
+
+# css
+_preflight.css
