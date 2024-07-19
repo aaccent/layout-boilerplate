@@ -33,12 +33,12 @@ function validateForm(form: HTMLFormElement): Boolean {
 
     const requiredInputs = form.querySelectorAll<HTMLInputElement>('input[required]')
 
-    requiredInputs.forEach((i) => {
-        if (i.value !== '') return
+    requiredInputs.forEach((input) => {
+        if (input.value !== '') return
 
         valid = false
-        i.classList.add('invalid')
-        i.addEventListener('input', () => i.classList.remove('invalid'), { once: true })
+        input.classList.add('invalid')
+        input.addEventListener('input', () => input.classList.remove('invalid'), { once: true })
     })
 
     return valid
