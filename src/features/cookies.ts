@@ -4,7 +4,7 @@ export const COOKIES = {
 
 export type CookieName = (typeof COOKIES)[keyof typeof COOKIES]
 
-export function cookies(cookiesStr: string) {
+export function parseCookies(cookiesStr: string) {
     const cookies = cookiesStr
         .split(';')
         .map((i) => i.trim().split('='))
@@ -18,6 +18,10 @@ export function cookies(cookiesStr: string) {
             return cookies
         },
     }
+}
+
+export function cookies() {
+    return parseCookies(document.cookie)
 }
 
 interface CookieOptions {
