@@ -12,7 +12,7 @@
   "author": "foxhable",
   "license": "ISC",
   "devDependencies": {
-    "@fancyapps/ui": "^5.0.36",
+    "@fancyapps/ui": "^4.0.31",
     "@prettier/plugin-pug": "^3.0.0",
     "@types/fancybox": "^3.5.7",
     "@types/google.maps": "^3.55.9",

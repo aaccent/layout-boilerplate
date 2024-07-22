@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@fancyapps/ui':
-        specifier: ^5.0.36
-        version: 5.0.36
+        specifier: ^4.0.31
+        version: 4.0.31
       '@prettier/plugin-pug':
         specifier: ^3.0.0
         version: 3.0.0(prettier@3.3.3)
@@ -128,8 +128,8 @@ packages:
   '@emnapi/runtime@1.2.0':
     resolution: {integrity: sha512-bV21/9LQmcQeCPEg3BDFtvwL6cwiTMksYNWQQ4KOxCZikEGalWtenoZ0wCiukJINlGCIi2KXx01g4FoH/LxpzQ==}
 
-  '@fancyapps/ui@5.0.36':
-    resolution: {integrity: sha512-GMygQzp1MBTFNTT6AzpbL6pXTD6bTxwjmmpI1fe8Ozmmiseu8/g82Sudl1YhcbZmS4bJgaBOF5THDFGpXQ1fDw==}
+  '@fancyapps/ui@4.0.31':
+    resolution: {integrity: sha512-D7+PMIloxSOFJyY+lXcNlVDhmssOmDT6PT5fqQUIiws2hT7PH29r0EKZxERmACSQpm6qrFkP7rSguzXWvRJduQ==}
 
   '@img/sharp-darwin-arm64@0.33.4':
     resolution: {integrity: sha512-p0suNqXufJs9t3RqLBO6vvrgr5OhgbWp76s5gTRvdmxmuv9E1rcaqGUsl3l4mKVmXPkTkTErXediAui4x+8PSA==}
@@ -2579,7 +2579,7 @@ snapshots:
       tslib: 2.5.3
     optional: true
 
-  '@fancyapps/ui@5.0.36': {}
+  '@fancyapps/ui@4.0.31': {}
 
   '@img/sharp-darwin-arm64@0.33.4':
     optionalDependencies:
