@@ -22,7 +22,7 @@ const keepPugFolderStructureForFonts = (pathData) => keepPugFolderStructure(path
 const pagesRegex = /[\\/]pages[\\/]([\w_-]+)[\\/]/
 
 module.exports = async () => {
-    const entry = await getEntry([PATHS.SRC.PAGES])
+    const entry = await getEntry(PATHS.SRC.PAGES)
     const isDev = process.env.NODE_ENV === 'development'
 
     return {

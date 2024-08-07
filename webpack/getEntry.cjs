@@ -1,6 +1,10 @@
 const files = require('./files.cjs')
 
-module.exports = async (pathsArr) => {
+/**
+ * Находит все `pug` файл в папках и подпапках по путям `pathsArr`
+ * @return Возвращает пути к найденным `pug` файлам
+ */
+module.exports = async (...pathsArr) => {
     const result = {}
     const ext = 'pug'
 
