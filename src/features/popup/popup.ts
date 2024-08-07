@@ -38,12 +38,27 @@ function popupBtnHandler(e: MouseEvent) {
     openPopup(popupName)
 }
 
+function escKeyHandler(e: KeyboardEvent) {
+    if (e.key !== 'Escape') return
+
+    closeActivePopup()
+    document.body.removeEventListener('keydown', escKeyHandler)
+}
+
+/**
+ * Открывает попап с `name` в атрибуте `data-popup` и вызывает на нём
+ * пользовательское событие [`opened`]{@link openedPopupEvent}.
+ *
+ * Если есть открытый попап, то закрывает его.
+ * */
 export function openPopup(name: string) {
     const activeHeader = document.querySelector('.header.active')
     const targetPopup = document.querySelector<HTMLDivElement>(`.popup[data-popup="${name}"]`)
 
     if (!targetPopup) throw new Error(`Cant find .popup with data-popup="${name}"`)
 
+    // process нужен для того, чтобы при закрытии и
+    // открытии попапа пользователь не мог лишний раз скролить
     closeActivePopup('process')
     targetPopup.classList.add('opened')
     targetPopup.dispatchEvent(openedPopupEvent)
@@ -52,19 +67,17 @@ export function openPopup(name: string) {
     document.body.addEventListener('keydown', escKeyHandler)
 }
 
-function escKeyHandler(e: KeyboardEvent) {
-    if (e.key !== 'Escape') return
-
-    closeActivePopup()
-    document.body.removeEventListener('keydown', escKeyHandler)
-}
-
+/**
+ * Закрывает текущий активный попап и вызывает на нём
+ * пользовательское событие [`closed`]{@link closedPopupEvent}.
+ * @param code - Системный код для сторонних эффектов во время закрытия.
+ * Если передать `process`, то не будет возвращать возможность прокрутки страницы.
+ */
 export function closeActivePopup(code?: any | 'process') {
-    const activeHeader = document.querySelector('.header.active')
     const activePopup = document.querySelector('.popup.opened')
     if (!activePopup) return
 
-    if (code !== 'process' && !activeHeader) enableScroll()
+    if (code !== 'process') enableScroll()
     activePopup.classList.remove('opened')
     activePopup.dispatchEvent(closedPopupEvent)
 }

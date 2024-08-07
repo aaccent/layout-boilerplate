@@ -1,7 +1,24 @@
 export interface MapConfig {
+    /**
+     * Создавать метку на карте после загрузки.
+     * По умолчанию метка ставится в центр карты.
+     * @default true
+     * */
     setPlacemark?: boolean
+    /**
+     * Включить возможность приближать колёсиком мыши
+     * @default false
+     */
     zoomByWheel?: boolean
+    /**
+     * Выводить интерфейс карты
+     * @default true
+     */
     ui: boolean
+    /**
+     * Масштаб карты при инициализации
+     * @default 17
+     */
     zoom?: number
 }
 

@@ -1,7 +1,29 @@
+//- Выводит два переноса строки
 mixin lineBreak
     |
     |
 
+//- Оборачивает блок в переносы строки чтобы вывести inline элемент на одной строке
+//- Pug код
+//- ```pug
+//- span text
+//- span text
+//- ```
+//- Выведется как
+//- ```html
+//- <span>text</span><span>text</span>
+//- ```
+//- Что создаёт проблемы читабельность генерируемого html файла,
+//- поэтому если использовать миксин wrapBreak
+//- ```pug
+//- wrapBreak: span text
+//- wrapBreak: span text
+//- ```
+//- Получится
+//- ```html
+//- <span>text</span>
+//- <span>text</span>
+//- ```
 mixin wrapBreak
     +lineBreak
     block
