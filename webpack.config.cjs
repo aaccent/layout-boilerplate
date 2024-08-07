@@ -5,6 +5,7 @@ const getEntry = require('./webpack/getEntry.cjs')
 const { FOLDER_NAMES, PATHS } = require('./webpack/paths.cjs')
 
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+const sharp = require('sharp')
 
 const sourcePath = path.join(__dirname, 'src')
 
@@ -112,6 +113,34 @@ module.exports = async () => {
             minimizer: [
                 '...',
                 new ImageMinimizerPlugin({
+                    minimizer: {
+                        async implementation(original) {
+                            const inputExt = path.extname(original.filename).toLowerCase()
+
+                            if (['webp', 'jpg', 'jpeg', 'png'].includes(inputExt)) {
+                                return null
+                            }
+
+                            let result
+                            try {
+                                result = await sharp(original.data).webp({ quality: 90 }).toBuffer()
+                            } catch (error) {
+                                original.errors.push(error)
+                                return null
+                            }
+
+                            return {
+                                filename: original.filename.replace(inputExt, '.webp'),
+                                data: result,
+                                warnings: [...original.warnings],
+                                errors: [...original.errors],
+                                info: {
+                                    ...original.info,
+                                    minimized: true,
+                                },
+                            }
+                        },
+                    },
                     generator: [
                         {
                             preset: 'webp',
@@ -119,7 +148,7 @@ module.exports = async () => {
                             options: {
                                 encodeOptions: {
                                     webp: {
-                                        quality: 80,
+                                        quality: 95,
                                     },
                                 },
                             },
