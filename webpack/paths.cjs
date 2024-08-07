@@ -1,56 +1,60 @@
 const path = require('path')
 
-const filesNames = {
-    mainStyle: 'style',
-    mainJS: 'main',
+const FILE_NAMES = {
+    MAIN_STYLES: 'style',
+    MAIN_SCRIPTS: 'main',
 }
 
-const foldersNames = {
-    src: 'src',
-    dist: 'dist',
-    fonts: 'fonts',
-    img: 'media',
-    css: 'css',
-    js: 'js',
-    styles: 'styles',
-    scripts: 'scripts',
-    layout: 'layout',
-    assets: 'assets',
-    components: 'components',
-    features: 'features',
-    ui: 'ui',
-    pages: 'pages',
-    globals: 'globals',
+const FOLDER_NAMES = {
+    SRC: 'src',
+    BUILD: 'build',
+    FONTS: 'fonts',
+    IMG: 'media',
+    STYLES: {
+        BUILD: 'css',
+        SRC: 'styles',
+    },
+    SCRIPTS: {
+        BUILD: 'js',
+        SRC: 'scripts',
+    },
+    LAYOUT: 'layout',
+    ASSETS: 'assets',
+    COMPONENTS: 'components',
+    FEATURES: 'features',
+    UI: 'ui',
+    PAGES: 'pages',
+    GLOBALS: 'globals',
 }
 
-const rootPaths = {
-    src: path.join(process.cwd(), foldersNames.src),
-    dist: path.join(process.cwd(), foldersNames.dist),
+const ROOT_PATHS = {
+    SRC: path.join(process.cwd(), FOLDER_NAMES.SRC),
+    BUILD: path.join(process.cwd(), FOLDER_NAMES.BUILD),
 }
 
-const paths = {
-    src: {
+const PATHS = {
+    SRC: {
         /** Path of 'src' folder */
-        _: rootPaths.src,
-        assets: path.join(rootPaths.src, foldersNames.assets),
-        fonts: path.join(rootPaths.src, foldersNames.assets, foldersNames.fonts),
-        globals: path.join(rootPaths.src, foldersNames.globals),
-        components: path.join(rootPaths.src, foldersNames.components),
-        features: path.join(rootPaths.src, foldersNames.features),
-        layout: path.join(rootPaths.src, foldersNames.layout),
-        ui: path.join(rootPaths.src, foldersNames.ui),
-        pages: path.join(rootPaths.src, foldersNames.pages),
-        scripts: path.join(rootPaths.src, foldersNames.scripts),
-        styles: path.join(rootPaths.src, foldersNames.styles),
+        _: ROOT_PATHS.SRC,
+        ASSETS: path.join(ROOT_PATHS.SRC, FOLDER_NAMES.ASSETS),
+        FONTS: path.join(ROOT_PATHS.SRC, FOLDER_NAMES.ASSETS, FOLDER_NAMES.FONTS),
+        GLOBALS: path.join(ROOT_PATHS.SRC, FOLDER_NAMES.GLOBALS),
+        COMPONENTS: path.join(ROOT_PATHS.SRC, FOLDER_NAMES.COMPONENTS),
+        FEATURES: path.join(ROOT_PATHS.SRC, FOLDER_NAMES.FEATURES),
+        LAYOUT: path.join(ROOT_PATHS.SRC, FOLDER_NAMES.LAYOUT),
+        UI: path.join(ROOT_PATHS.SRC, FOLDER_NAMES.UI),
+        PAGES: path.join(ROOT_PATHS.SRC, FOLDER_NAMES.PAGES),
+        SCRIPTS: path.join(ROOT_PATHS.SRC, FOLDER_NAMES.SCRIPTS.SRC),
+        STYLES: path.join(ROOT_PATHS.SRC, FOLDER_NAMES.STYLES.SRC),
     },
-    dist: {
+    BUILD: {
         /** Path of 'dist' folder */
-        _: rootPaths.dist,
-        img: path.join(rootPaths.dist, foldersNames.img),
-        fonts: path.join(rootPaths.dist, foldersNames.fonts),
-        scripts: path.join(rootPaths.dist, foldersNames.js),
-        styles: path.join(rootPaths.dist, foldersNames.css),
+        _: ROOT_PATHS.BUILD,
+        IMG: path.join(ROOT_PATHS.BUILD, FOLDER_NAMES.IMG),
+        FONTS: path.join(ROOT_PATHS.BUILD, FOLDER_NAMES.FONTS),
+        SCRIPTS: path.join(ROOT_PATHS.BUILD, FOLDER_NAMES.SCRIPTS.BUILD),
+        STYLES: path.join(ROOT_PATHS.BUILD, FOLDER_NAMES.STYLES.BUILD),
     },
 }
 
-module.exports = { paths, filesNames, foldersNames }
+module.exports = { PATHS, FILE_NAMES, FOLDER_NAMES }

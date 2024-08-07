@@ -2,7 +2,7 @@ const path = require('path')
 const PugPlugin = require('pug-plugin')
 
 const getEntry = require('./webpack/getEntry.cjs')
-const { foldersNames, paths } = require('./webpack/paths.cjs')
+const { FOLDER_NAMES, PATHS } = require('./webpack/paths.cjs')
 
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
@@ -22,46 +22,46 @@ const keepPugFolderStructureForFonts = (pathData) => keepPugFolderStructure(path
 const pagesRegex = /[\\/]pages[\\/]([\w_-]+)[\\/]/
 
 module.exports = async () => {
-    const entry = await getEntry([paths.src.pages])
+    const entry = await getEntry([PATHS.SRC.PAGES])
     const isDev = process.env.NODE_ENV === 'development'
 
     return {
         mode: isDev ? 'development' : 'production',
         entry: { ...entry },
         output: {
-            path: paths.dist._,
+            path: PATHS.BUILD._,
             filename: (pathData) => {
                 if (pagesRegex.test(pathData.filename)) {
                     const pageName = pathData.filename.match(pagesRegex)[1]
-                    return `${foldersNames.js}/${pageName}.bundle.js`
+                    return `${FOLDER_NAMES.SCRIPTS.BUILD}/${pageName}.bundle.js`
                 }
 
                 const { chunk } = pathData
-                return `${foldersNames.js}/${chunk.name.split('.')[0]}.bundle.js`
+                return `${FOLDER_NAMES.SCRIPTS.BUILD}/${chunk.name.split('.')[0]}.bundle.js`
             },
             clean: true,
         },
         devtool: 'source-map',
         devServer: {
             static: {
-                directory: paths.src._,
+                directory: PATHS.SRC._,
             },
             client: { progress: true },
         },
         resolve: {
             extensions: ['.js', '.ts'],
             alias: {
-                '@': paths.src._,
+                '@': PATHS.SRC._,
                 npm: path.resolve(process.cwd(), 'node_modules'),
-                assets: paths.src.assets,
-                globals: paths.src.globals,
-                components: paths.src.components,
-                features: paths.src.features,
-                layout: paths.src.layout,
-                ui: paths.src.ui,
-                styles: paths.src.styles,
-                scripts: paths.src.scripts,
-                pages: paths.src.pages,
+                assets: PATHS.SRC.ASSETS,
+                globals: PATHS.SRC.GLOBALS,
+                components: PATHS.SRC.COMPONENTS,
+                features: PATHS.SRC.FEATURES,
+                layout: PATHS.SRC.LAYOUT,
+                ui: PATHS.SRC.UI,
+                styles: PATHS.SRC.STYLES,
+                scripts: PATHS.SRC.SCRIPTS,
+                pages: PATHS.SRC.PAGES,
             },
         },
         module: {
@@ -100,10 +100,10 @@ module.exports = async () => {
                     filename: (pathData) => {
                         if (pagesRegex.test(pathData.filename)) {
                             const pageName = pathData.filename.match(pagesRegex)[1]
-                            return `${foldersNames.css}/${pageName}.styles.css`
+                            return `${FOLDER_NAMES.STYLES.BUILD}/${pageName}.styles.css`
                         }
 
-                        return `${foldersNames.css}/[name].css`
+                        return `${FOLDER_NAMES.STYLES.BUILD}/[name].css`
                     },
                 },
             }),
