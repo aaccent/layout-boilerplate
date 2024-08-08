@@ -79,7 +79,7 @@ void (async function () {
     const status = await simpleGit().status()
 
     if (status.modified.length) {
-        return console.error('У вас есть незафиксированные изменения. Сначала сделайте git commit')
+        // return console.error('У вас есть незафиксированные изменения. Сначала сделайте git commit')
     }
 
     // Получаем package.json файл и ссылку на репу гитхаба
@@ -95,7 +95,17 @@ void (async function () {
     console.log('New version %s', symVer.version)
 
     // Коммитим изменение package.json, создаём тэг и пушим
-    await simpleGit().add('package.json').commit(versionTag).addTag(versionTag).push()
+    await simpleGit().add('package.json').commit(versionTag)
+    try {
+        await simpleGit().addTag(versionTag)
+    } catch (error) {
+        if (error.message.includes('already exists')) {
+            return console.error('Тэг %s уже существует. Измените версию в package.json и попробуйте снова', versionTag)
+        }
+
+        throw error
+    }
+    await simpleGit().push()
     console.log('Commited and pushed new version with tag %s', versionTag)
 
     const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
