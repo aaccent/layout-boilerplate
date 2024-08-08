@@ -47,7 +47,10 @@ function writeVersionToPackage(newVersion) {
 
 function parseCLIArgs() {
     const rawArgs = process.argv.slice(2)
-    const parsedArgs = rawArgs.map((arg) => arg.replace('--', '').split('='))
+    const parsedArgs = rawArgs
+        .map((arg) => arg.replace('--', '').split('='))
+        .map(([name, value]) => [name, value || '1'])
+
     return Object.fromEntries(parsedArgs)
 }
 
