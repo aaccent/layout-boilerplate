@@ -1,7 +1,8 @@
 import { join } from 'path'
 import archiver from 'archiver'
 import { createWriteStream, mkdirSync, renameSync, rmSync } from 'fs'
-import { BUILD_FOLDER_PATH, getPackageFile, TEMP_FOLDER_PATH } from './general.js'
+import { getPackageFile, TEMP_FOLDER_PATH } from './general.js'
+import { ROOT_PATHS } from '../../webpack/paths.js'
 
 export function generateArchiveNameFromPackage() {
     const myPackage = getPackageFile()
@@ -38,16 +39,16 @@ export function zipBuildFolder() {
     zipFile.on('close', () => {
         console.log('Zipped %d kilobytes', zip.pointer() / 1000)
 
-        const archiveFilePath = join(BUILD_FOLDER_PATH, archiveFileName)
+        const archiveFilePath = join(ROOT_PATHS.BUILD, archiveFileName)
         moveFile(tempArchiveFilePath, archiveFilePath)
         removeFolderSync(TEMP_FOLDER_PATH)
 
-        console.log('Archive %s in folder %s', archiveFileName, BUILD_FOLDER_PATH)
+        console.log('Archive %s in folder %s', archiveFileName, ROOT_PATHS.BUILD)
         resolve({ archiveFilePath, archiveFileName })
     })
 
     zip.pipe(zipFile)
-    zip.directory(BUILD_FOLDER_PATH, false)
+    zip.directory(ROOT_PATHS.BUILD, false)
     zip.finalize()
 
     return promise
