@@ -45,7 +45,43 @@ function writeVersionToPackage(newVersion) {
     writeFileSync(PACKAGE_FILE_PATH, JSON.stringify(packageFile, undefined, 2))
 }
 
-async function uploadBuildZIP(octokit, { uploadUrl, archiveFile }) {
+function parseCLIArgs() {
+    const rawArgs = process.argv.slice(2)
+    const parsedArgs = rawArgs.map((arg) => arg.replace('--', '').split('='))
+    return Object.fromEntries(parsedArgs)
+}
+
+/**
+ * Проверяет доступ владельца `owner` к репозиторию `repo` на права записи
+ * @param {Octokit} octokit - Сессия гитхаба
+ * @param {string} owner - Владелец репозитория
+ * @param {string} repo - Название репозитория
+ * @return {Promise<boolean>} - `true` если у пользователя есть права записи, иначе `false`
+ */
+async function isHaveAccessToRepo(octokit, { owner, repo }) {
+    try {
+        const res = await octokit.request('GET /repos/{owner}/{repo}', {
+            owner,
+            repo,
+        })
+
+        return res.data.permissions.push
+    } catch (error) {
+        if (error.status === 404) {
+            throw new Error(`Репозитория ${owner}/${repo} не существует или вы не имеете к нему доступ`)
+        }
+    }
+}
+
+/**
+ * Отправляет `archiveFile` в гитхаб релиз по ссылке `uploadUrl`
+ * @param {Octokit} octokit - Сессия гитхаба
+ * @param {string} uploadUrl - Ссылка на гитхаб upload для загрузки файла `archiveFile`
+ * @param {Buffer} archiveFile - Бинарный код файла, который будет загружен по `uploadUrl`
+ * @param {string} fileName - Название файла
+ * @return {Promise<void>}
+ */
+async function uploadBuildZIP(octokit, { uploadUrl, archiveFile, fileName }) {
     await octokit.request({
         method: 'POST',
         url: uploadUrl,
@@ -53,12 +89,21 @@ async function uploadBuildZIP(octokit, { uploadUrl, archiveFile }) {
             'content-type': 'application/zip',
         },
         data: archiveFile,
-        name: ARCHIVE_FILE_NAME,
+        name: fileName,
     })
 
-    console.log('Uploaded build archive %s to release', ARCHIVE_FILE_NAME)
+    console.log('Uploaded build archive %s to release', fileName)
 }
 
+/**
+ * Создаёт релиз с названием и тэгом `versionTag` в
+ * репозитории `repo` владельца `owner`
+ * @param {Octokit} octokit - Сессия гитхаба
+ * @param {string} owner - Владелец репозитория
+ * @param {string} repo - Название репозитория
+ * @param {`v${string}`} versionTag - Текст для тэга и названия релиза
+ * @return {Promise<string>} - Ссылку для загрузки файлов в релиз
+ */
 async function createRelease(octokit, { owner, repo, versionTag }) {
     const release = await octokit.request('POST /repos/{owner}/{repo}/releases', {
         owner: owner,
@@ -79,7 +124,7 @@ void (async function () {
     const status = await simpleGit().status()
 
     if (status.modified.length) {
-        // return console.error('У вас есть незафиксированные изменения. Сначала сделайте git commit')
+        return console.error('У вас есть незафиксированные изменения. Сначала сделайте git commit')
     }
 
     // Получаем package.json файл и ссылку на репу гитхаба
@@ -87,9 +132,32 @@ void (async function () {
     const githubLink = getGithubLinkFromPackage(myPackage)
     console.log('Github repo %s/%s', githubLink.owner, githubLink.repo)
 
-    // Получаем текущую версию, обновляем её и записываем в package.json
+    const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
+
+    const haveWriteAccess = await isHaveAccessToRepo(octokit, { ...githubLink })
+    if (!haveWriteAccess) {
+        return console.error('У вас нет прав на создание релизов в репозитории')
+    }
+
+    // Получаем текущую версию
     const symVer = getSymVerFromPackage(myPackage)
-    symVer.newMinor()
+
+    // Выставляем новую версию
+    const cliArgs = parseCLIArgs()
+    if (!cliArgs.major && !cliArgs.minor && !cliArgs.patch) {
+        return console.error(
+            'Необходимо выбрать тип версии:\n',
+            'pnpm run release -- --major\n',
+            'pnpm run release -- --minor\n',
+            'pnpm run release -- --patch\n',
+        )
+    }
+
+    if (cliArgs.major) symVer.newMajor()
+    else if (cliArgs.minor) symVer.newMinor()
+    else if (cliArgs.patch) symVer.newPatch()
+
+    /** @type {`v${string}`} */
     const versionTag = `v${symVer.version}`
     writeVersionToPackage(symVer.version)
     console.log('New version %s', symVer.version)
@@ -108,14 +176,12 @@ void (async function () {
     await simpleGit().push()
     console.log('Commited and pushed new version with tag %s', versionTag)
 
-    const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
-
     // Создаём релиз
     const uploadUrl = await createRelease(octokit, { ...githubLink, versionTag })
     console.log('Create release for version v%s', symVer.version)
 
     // Создаём архив релиза и загружаем в релиз
-    const archiveFilePath = await zipBuildFolder()
+    const { archiveFilePath, archiveFileName } = await zipBuildFolder()
     const archiveFile = readFileSync(archiveFilePath)
-    await uploadBuildZIP(octokit, { archiveFile, uploadUrl })
+    await uploadBuildZIP(octokit, { archiveFile, uploadUrl, fileName: archiveFileName })
 })()

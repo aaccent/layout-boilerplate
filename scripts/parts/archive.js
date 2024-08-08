@@ -22,7 +22,7 @@ function moveFile(file, destination) {
     renameSync(file, destination)
 }
 
-/** @return {Promise<string>} - Путь к созданному архиву */
+/** @return {Promise<{ archiveFileName: string; archiveFilePath: string }>} - Путь к созданному архиву и его название */
 export function zipBuildFolder() {
     const { resolve, promise } = Promise.withResolvers()
 
@@ -43,7 +43,7 @@ export function zipBuildFolder() {
         removeFolderSync(TEMP_FOLDER_PATH)
 
         console.log('Archive %s in folder %s', archiveFileName, BUILD_FOLDER_PATH)
-        resolve(archiveFilePath)
+        resolve({ archiveFilePath, archiveFileName })
     })
 
     zip.pipe(zipFile)
