@@ -124,6 +124,12 @@ async function createRelease(octokit, { owner, repo, versionTag }) {
 }
 
 void (async function () {
+    if (!process.env.GITHUB_TOKEN) {
+        throw new Error(
+            'Необходимо указать гитхаб токен в env переменной GITHUB_TOKEN. Это можно сделать через cli или в файле .env.local. Ни в коем случае не указывайте токен в .env',
+        )
+    }
+
     const status = await simpleGit().status()
 
     if (status.modified.length) {
