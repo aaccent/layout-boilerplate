@@ -1,11 +1,11 @@
-const path = require('path')
+import path from 'path'
 
-const FILE_NAMES = {
+export const FILE_NAMES = {
     MAIN_STYLES: 'style',
     MAIN_SCRIPTS: 'main',
 }
 
-const FOLDER_NAMES = {
+export const FOLDER_NAMES = {
     SRC: 'src',
     BUILD: 'build',
     FONTS: 'fonts',
@@ -27,12 +27,12 @@ const FOLDER_NAMES = {
     GLOBALS: 'globals',
 }
 
-const ROOT_PATHS = {
+export const ROOT_PATHS = {
     SRC: path.join(process.cwd(), FOLDER_NAMES.SRC),
     BUILD: path.join(process.cwd(), FOLDER_NAMES.BUILD),
 }
 
-const PATHS = {
+export const PATHS = {
     SRC: {
         /** Path of 'src' folder */
         _: ROOT_PATHS.SRC,
@@ -56,5 +56,3 @@ const PATHS = {
         STYLES: path.join(ROOT_PATHS.BUILD, FOLDER_NAMES.STYLES.BUILD),
     },
 }
-
-module.exports = { PATHS, FILE_NAMES, FOLDER_NAMES }

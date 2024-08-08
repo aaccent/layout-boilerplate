@@ -1,14 +1,14 @@
-const files = require('./files.cjs')
+import { getFilesWithExt } from './files.js'
 
 /**
  * Находит все `pug` файл в папках и подпапках по путям `pathsArr`
  * @return Возвращает пути к найденным `pug` файлам
  */
-module.exports = async (...pathsArr) => {
+export async function getEntry(...pathsArr) {
     const result = {}
     const ext = 'pug'
 
-    const entries = files.getFilesWithExt(pathsArr, ext, true)
+    const entries = getFilesWithExt(pathsArr, ext, true)
 
     for (const filepath of entries) {
         const filename = filepath.match(new RegExp(`/([\\w_-]+)\\.${ext}`))[1]

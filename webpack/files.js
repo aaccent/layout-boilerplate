@@ -1,11 +1,11 @@
-const fs = require('fs')
-const path = require('node:path')
+import fs from 'fs'
+import path from 'node:path'
 
 function getDirItems(dir) {
     return fs.readdirSync(dir)
 }
 
-function isDirectory(path) {
+export function isDirectory(path) {
     return fs.lstatSync(path).isDirectory()
 }
 
@@ -28,7 +28,7 @@ function convertPaths(arrPaths) {
  * @param {boolean} subFolders
  * @return {string[]}
  * */
-function getFilesWithExt(paths, ext, subFolders = false) {
+export function getFilesWithExt(paths, ext, subFolders = false) {
     const result = []
     paths.forEach((p) => {
         const regex = new RegExp(`\\.${ext}$`)
@@ -48,6 +48,3 @@ function getFilesWithExt(paths, ext, subFolders = false) {
 
     return convertPaths(result)
 }
-
-module.exports = { isDirectory }
-module.exports = { getFilesWithExt }

@@ -1,13 +1,11 @@
-const path = require('path')
-const PugPlugin = require('pug-plugin')
+import path from 'path'
+import PugPlugin from 'pug-plugin'
+import { getEntry } from './webpack/getEntry.js'
+import { FOLDER_NAMES, PATHS } from './webpack/paths.js'
+import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin'
+import sharp from 'sharp'
 
-const getEntry = require('./webpack/getEntry.cjs')
-const { FOLDER_NAMES, PATHS } = require('./webpack/paths.cjs')
-
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
-const sharp = require('sharp')
-
-const sourcePath = path.join(__dirname, 'src')
+const sourcePath = path.join(process.cwd(), 'src')
 
 const keepPugFolderStructure = (pathData, replacer = '') => {
     const sourceFile = pathData.filename
@@ -22,7 +20,7 @@ const keepPugFolderStructureForFonts = (pathData) => keepPugFolderStructure(path
 
 const pagesRegex = /[\\/]pages[\\/]([\w_-]+)[\\/]/
 
-module.exports = async () => {
+export default async function () {
     const entry = await getEntry(PATHS.SRC.PAGES)
     const isDev = process.env.NODE_ENV === 'development'
 
