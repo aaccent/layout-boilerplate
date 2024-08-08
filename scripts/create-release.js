@@ -96,6 +96,7 @@ void (async function () {
 
     // Коммитим изменение package.json, создаём тэг и пушим
     await simpleGit().commit(versionTag).addTag(versionTag).push()
+    console.log('Commited and pushed new version with tag %s', versionTag)
 
     const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
 
