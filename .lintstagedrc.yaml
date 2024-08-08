@@ -1,5 +1,5 @@
 {
     "*.md": ["prettier --write"],
-    "*.{pug}": ["prettier --write"],
+    "*.pug": ["prettier --write"],
     "*.{ts,cjs,mjs,js,css,scss}": ["prettier --write"]
 }
