@@ -1,7 +1,7 @@
 import archiver from 'archiver'
 import { join } from 'path'
 import { createWriteStream, mkdirSync, rmSync, renameSync } from 'fs'
-import { ROOT_PATHS } from './paths.js'
+import { ROOT_PATHS } from '../webpack/paths.js'
 import myPackage from '../package.json' with { type: 'json' }
 
 function generateArchiveName() {
