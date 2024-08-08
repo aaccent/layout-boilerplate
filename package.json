@@ -6,6 +6,8 @@
   "description": "Webpack template for page layout",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
+    "prebuild:archive": "npm run build",
+    "build:archive": "node ./webpack/archive-task.js",
     "dev": "cross-env NODE_ENV=development webpack server",
     "prepare": "husky"
   },
@@ -17,6 +19,7 @@
     "@types/fancybox": "^3.5.7",
     "@types/google.maps": "^3.55.9",
     "@types/yandex-maps": "^2.1.36",
+    "archiver": "^7.0.1",
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.0",

@@ -12,3 +12,7 @@ package-lock.json
 
 # Tests
 test.*
+
+# temp
+_temp
+temp
