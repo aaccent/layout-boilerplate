@@ -36,7 +36,7 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                   name: build
-                  path: dist
+                  path: build
                   retention-days: 1
     deploy:
         runs-on: ubuntu-latest
@@ -48,7 +48,7 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                   name: build
-                  path: dist
+                  path: build
 
             - name: Copy files by FTP
               uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -56,7 +56,7 @@ jobs:
                   server: ${{ secrets.HOST }}
                   username: ${{ secrets.USERNAME }}
                   password: ${{ secrets.PASSWORD }}
-                  local-dir: ./dist/
+                  local-dir: ./build/
                   server-dir: .${{ vars.PATH }}/
                   exclude: |
                       **/*.html
