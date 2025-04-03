@@ -91,7 +91,11 @@ export default async function () {
                 entry: {
                     ...entry,
                 },
-                pretty: true,
+                pretty: {
+                    html: {
+                        inline: [],
+                    },
+                },
                 css: {
                     filename: (pathData) => {
                         if (pagesRegex.test(pathData.filename)) {

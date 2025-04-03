@@ -1,44 +1,13 @@
-//- Выводит два переноса строки
-mixin lineBreak
-    |
-    |
-
-//- Оборачивает блок в переносы строки чтобы вывести inline элемент на одной строке
-//- Pug код
-//- ```pug
-//- span text
-//- span text
-//- ```
-//- Выведется как
-//- ```html
-//- <span>text</span><span>text</span>
-//- ```
-//- Что создаёт проблемы читабельность генерируемого html файла,
-//- поэтому если использовать миксин wrapBreak
-//- ```pug
-//- wrapBreak: span text
-//- wrapBreak: span text
-//- ```
-//- Получится
-//- ```html
-//- <span>text</span>
-//- <span>text</span>
-//- ```
-mixin wrapBreak
-    +lineBreak
-    block
-    +lineBreak
-
 mixin btn(action)
-    +wrapBreak: button(type='button', data-action=action)&attributes(attributes)
-        +wrapBreak: block
+    button(type='button', data-action=action)&attributes(attributes)
+        block
 
 mixin popupBtn(popupName)
-    +wrapBreak: button(type='button', data-action='popup', data-popup=popupName)&attributes(attributes)
-        +wrapBreak: block
+    button(type='button', data-action='popup', data-popup=popupName)&attributes(attributes)
+        block
 
 mixin img(src)
-    +wrapBreak: img(src=src || '', alt='')&attributes(attributes)
+    img(src=src || '', alt='')&attributes(attributes)
 
 mixin anchor(href)
-    +wrapBreak: a(href=href || '#')&attributes(attributes): block
+    a(href=href || '#')&attributes(attributes): block
