@@ -64,8 +64,8 @@ importers:
         specifier: ^2.1.2
         version: 2.1.2(postcss@8.4.49)(prettier@3.4.2)
       pug-plugin:
-        specifier: ^5.3.0
-        version: 5.3.0(parse5@7.1.2)(webpack@5.98.0)
+        specifier: ^6.0.0
+        version: 6.0.0(parse5@7.1.2)(webpack@5.98.0)
       sass:
         specifier: ^1.86.2
         version: 1.86.2
@@ -671,9 +671,13 @@ packages:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
 
-  ansis@2.0.3:
-    resolution: {integrity: sha512-tcSGX0mhuDFHsgRrT56xnZ9v2X+TOeKhJ75YopI5OBgyT7tGaG5m6BmeC+6KHjiucfBvUHehQMecHbULIAkFPA==}
-    engines: {node: '>=12.13'}
+  ansis@3.10.0:
+    resolution: {integrity: sha512-hxDKLYT7hy3Y4sF3HxI926A3urzPxi73mZBB629m9bCVF+NyKNxbwCqqm+C/YrGPtxLwnl6d8/ZASCsz6SyvJA==}
+    engines: {node: '>=16'}
+
+  ansis@3.9.0:
+    resolution: {integrity: sha512-PcDrVe15ldexeZMsVLBAzBwF2KhZgaU0R+CHxH+x5kqn/pO+UWVBZJ+NEXMPpEOLUFeNsnNdoWYc2gwO+MVkDg==}
+    engines: {node: '>=16'}
 
   anymatch@3.1.3:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
@@ -1312,22 +1316,22 @@ packages:
   hpack.js@2.1.6:
     resolution: {integrity: sha512-zJxVehUdMGIKsRaNt7apO2Gqp0BdqW5yaiGHXXmbpvxgBYVZnAql+BJb4RO5ad2MgpbZKn5G6nMnegrH1FcNYQ==}
 
-  html-bundler-webpack-plugin@3.14.0:
-    resolution: {integrity: sha512-7/O5mz4IgNpljJqU2tugZ/AUTrRxkOrQcKRqrMicQI55MRh0fTLFuXVC7ow+PTfRT3ZgRHbZgxXdJRBHgNuFpA==}
-    engines: {node: '>=14.21.0'}
+  html-bundler-webpack-plugin@4.16.0:
+    resolution: {integrity: sha512-4CbFR0jnCh8+mDBDjBilwcTR1T+BBp87pPEH+LQhRCTW9/ATvljeRzmPztJxZrgGmzFKjYil67ZPZGk1UM7UXw==}
+    engines: {node: '>=18'}
     peerDependencies:
-      ejs: '>=3.1.9'
-      favicons: '>=7.1.4'
-      handlebars: '>=4.7.7'
-      liquidjs: '>=10.7.0'
+      ejs: '>=3.1.10'
+      favicons: '>=7.2.0'
+      handlebars: '>=4.7.8'
+      liquidjs: '>=10.17.0'
       markdown-it: '>=12'
       mustache: '>=4.2.0'
       nunjucks: '>=3.2.3'
       parse5: '>=7.1.2'
       prismjs: '>=1.29.0'
-      pug: '>=3.0.2'
+      pug: '>=3.0.3'
       twig: '>=1.17.1'
-      webpack: '>=5.32.0'
+      webpack: '>=5.81.0'
     peerDependenciesMeta:
       ejs:
         optional: true
@@ -2046,11 +2050,11 @@ packages:
   pug-parser@6.0.0:
     resolution: {integrity: sha512-ukiYM/9cH6Cml+AOl5kETtM9NR3WulyVP2y4HOU45DyMim1IeP/OOiyEWRr6qk5I5klpsBnbuHpwKmTx6WURnw==}
 
-  pug-plugin@5.3.0:
-    resolution: {integrity: sha512-WIwZ6nLXrFQnPkd7K/UWComnIBz1nBu2IxnMcltXOEBnZeis/lrEKPPHUdDM76G/pxSUambUe7tr7CLBoh2FgA==}
-    engines: {node: '>=16.20.0'}
+  pug-plugin@6.0.0:
+    resolution: {integrity: sha512-+Z0C1B/ZiglnxGnnZjAad8lf2bT0DsjDz30IDGNtAix5/14++c92GeZaLcg5XvNvqwMWHpk4tZZCuCYaiIYauA==}
+    engines: {node: '>=18'}
     peerDependencies:
-      webpack: '>=5.32.0'
+      webpack: '>=5.96.0'
 
   pug-runtime@3.0.1:
     resolution: {integrity: sha512-L50zbvrQ35TkpHwv0G6aLSuueDRwc/97XdY8kL3tOT0FmhgG7UypU3VztfV/LATAvmUfYi4wNxSajhSAeNN+Kg==}
@@ -3170,7 +3174,9 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
-  ansis@2.0.3: {}
+  ansis@3.10.0: {}
+
+  ansis@3.9.0: {}
 
   anymatch@3.1.3:
     dependencies:
@@ -3815,10 +3821,10 @@ snapshots:
       readable-stream: 2.3.8
       wbuf: 1.7.3
 
-  html-bundler-webpack-plugin@3.14.0(parse5@7.1.2)(pug@3.0.3)(webpack@5.98.0):
+  html-bundler-webpack-plugin@4.16.0(parse5@7.1.2)(pug@3.0.3)(webpack@5.98.0):
     dependencies:
       '@types/html-minifier-terser': 7.0.2
-      ansis: 2.0.3
+      ansis: 3.9.0
       enhanced-resolve: 5.17.1
       eta: 3.5.0
       html-minifier-terser: 7.2.0
@@ -4472,10 +4478,10 @@ snapshots:
       pug-error: 2.1.0
       token-stream: 1.0.0
 
-  pug-plugin@5.3.0(parse5@7.1.2)(webpack@5.98.0):
+  pug-plugin@6.0.0(parse5@7.1.2)(webpack@5.98.0):
     dependencies:
-      ansis: 2.0.3
-      html-bundler-webpack-plugin: 3.14.0(parse5@7.1.2)(pug@3.0.3)(webpack@5.98.0)
+      ansis: 3.10.0
+      html-bundler-webpack-plugin: 4.16.0(parse5@7.1.2)(pug@3.0.3)(webpack@5.98.0)
       js-beautify: 1.15.1
       pug: 3.0.3
       webpack: 5.98.0(webpack-cli@6.0.1)

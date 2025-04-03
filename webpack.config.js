@@ -26,7 +26,6 @@ export default async function () {
 
     return {
         mode: isDev ? 'development' : 'production',
-        entry: { ...entry },
         output: {
             path: PATHS.BUILD._,
             filename: (pathData) => {
@@ -66,11 +65,6 @@ export default async function () {
         module: {
             rules: [
                 {
-                    test: /\.pug$/,
-                    loader: PugPlugin.loader,
-                    options: { data: { isDev } },
-                },
-                {
                     test: /\.(css|scss|sass)$/,
                     use: ['css-loader', 'postcss-loader', 'sass-loader'],
                 },
@@ -94,6 +88,9 @@ export default async function () {
         },
         plugins: [
             new PugPlugin({
+                entry: {
+                    ...entry,
+                },
                 pretty: true,
                 css: {
                     filename: (pathData) => {
