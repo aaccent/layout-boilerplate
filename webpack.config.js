@@ -114,8 +114,7 @@ export default async function () {
                     minimizer: {
                         async implementation(original) {
                             const inputExt = path.extname(original.filename).toLowerCase()
-
-                            if (['webp', 'jpg', 'jpeg', 'png'].includes(inputExt)) {
+                            if (!['.webp', '.jpg', '.jpeg', '.png'].includes(inputExt)) {
                                 return null
                             }
 
