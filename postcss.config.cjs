@@ -12,6 +12,7 @@ module.exports = {
                 { type: 'includes', value: 'fancybox' },
                 { type: 'includes', value: 'aos' },
             ],
+            fontSizeMod: 10,
             limitMediaWidth: false,
             initWidth: [
                 // prettier-ignore
